@@ -130,6 +130,7 @@ $(document).ready(function () {
 <p>The competition of programming langauges is already a long story and continues to stretch on. Judging the topic is difficult, subjective and is prone to statistical methdological issues.</p>
 <p>This analysis is aimed at getting some indication of the trends, but by no means to come up with a definitive result or judgement over any debate.</p>
 <p>The present version attempts to achieve even less - to be a starting point for the above. I had to do some manual scraping to get some results quickly, hopefully no error has been made, a more streamlined approach is to follow later.</p>
+<p>The “methodology” was quite simple, I searched GitHub with keywords like Analysis and Spark on a yearly basis (as much as possible), and took a note of the results in a csv.</p>
 <pre class="r"><code>library(knitr)
 # setwd(&quot;/media/janca/Code/Prog/Github Analysis/analytics-and-hadoop-trends&quot;)
 analysis_table = read.csv(&quot;analysis_trends.csv&quot;)
@@ -236,7 +237,8 @@ barplot(counts,
 </tr>
 </tbody>
 </table>
-<p>Scala seems to be the major player with Spark.</p>
+<p>Scala steadily seems to be the major player at Spark. SparkR is in a pre-explosion state, if anywhere - and R didn’t make it to the top 10 in any year.</p>
+<p>However, looking at ItJobsWatch provides a slightly different result at the time writing, at least in the London context: Java and Apache Spark are more often colocated in job advertisements than Scala and Apache Spark. See <a href="http://www.itjobswatch.co.uk/jobs/london/apache%20spark.do">http://www.itjobswatch.co.uk/jobs/london/apache%20spark.do</a> for the current status. Similarly GitHub for the past 6 months indicates a trendshift as well - however due to potential seasonality issues and overwhelming Christmas laziness that’s not been presented here.</p>
 </div>
 </div>
 
