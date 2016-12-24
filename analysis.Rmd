@@ -22,9 +22,10 @@ The "methodology" was quite simple, I searched GitHub with keywords like Analysi
 ```{r}
 library(knitr)
 # setwd("/media/janca/Code/Prog/Github Analysis/analytics-and-hadoop-trends")
-analysis_table = read.csv("analysis_trends.csv")
-lang_table = read.csv("lang_trends.csv")
-spark_table = read.csv("spark_trends.csv")
+analysis_table = read.csv("input/analysis_trends.csv")
+lang_table = read.csv("input/lang_trends.csv")
+spark_table = read.csv("input/spark_trends.csv")
+ml_table = read.csv("input/ml_trends.csv")
 ```
 
 ## "Analysis"
@@ -71,8 +72,29 @@ kable(counts)
 Scala steadily seems to be the major player at Spark.
 SparkR is in a pre-explosion state, if anywhere - and R didn't make it to the top 10 in any year.
 
-However, looking at ItJobsWatch provides a slightly different result at the time writing, at least in the London context: Java and Apache Spark are more often colocated in job advertisements than Scala and Apache Spark. But! Java is big (30%) otherwise, and not sure how much of its slight dominance is left once we correct for that.
+However, looking at ItJobsWatch provides a slightly different result at the time writing, at least in the London context: Java and Apache Spark are more often colocated in job advertisements than Scala and Apache Spark. But! Java is big (30%) otherwise, some Spark users and thus teams will have a Hadoop background with a carried over Java preference, and not sure how much of its slight dominance would be left once we corrected for that.
 
 See http://www.itjobswatch.co.uk/jobs/london/apache%20spark.do for the current status in case of interest.
 
-Similarly GitHub for the past 6 months indicates a trendshift, too - however due to potential seasonality issues and overwhelming Christmas laziness that's not been presented here.
+Similarly GitHub for the past 6 months indicates a trendshift, too - however due to potential seasonality issues and overwhelming Christmas laziness that's not been presented here. Next version.
+
+
+## "Machine Learning"
+
+```{r}
+counts <- rbind(Python = ml_table$Python, Java = ml_table$Java, R = ml_table$R)
+colnames(counts) <- spark_table$Year
+
+barplot(counts, 
+  main='\'Machine Learning\' related repositories on Github',
+  xlim = c(0, ncol(counts) * nrow(counts) + 9),
+  xlab="Year of creation", 
+  col=c("darkblue","red", "green"),
+ 	legend.text = rownames(counts), 
+  beside = TRUE,
+  args.legend = (x=ncol(counts) + 3))
+
+kable(counts)
+```
+
+I think this one needs no explanation. In my experience, GitHub repos are quite often related to online learning, and the conclusion to draw is that Python is the de facto standard of choice for teaching machine learning. 
