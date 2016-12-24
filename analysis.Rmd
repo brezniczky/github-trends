@@ -2,10 +2,16 @@
 title: "Analysis, Spark, ML, Big Data vs. languages [Working draft]"
 author: "Janca"
 date: "23 December 2016"
-output: html_document
+output:
+  html_document:
+    toc: true
 ---
 
-# Introduction
+## Executive Conjecture
+
+Python.
+
+## Introduction
 
 Which language to choose for analytics? It can be hard to tell.
 
@@ -19,21 +25,22 @@ above. I had to do some manual scraping to get some results quickly, hopefully n
 
 The "methodology" was quite simple, I searched GitHub with keywords like Analysis and Spark on a yearly basis (as much as possible), and took a note of the results in csv's.
 
-```{r}
+```{r echo=FALSE}
 library(knitr)
 # setwd("/media/janca/Code/Prog/Github Analysis/analytics-and-hadoop-trends")
 analysis_table = read.csv("input/analysis_trends.csv")
 lang_table = read.csv("input/lang_trends.csv")
 spark_table = read.csv("input/spark_trends.csv")
 ml_table = read.csv("input/ml_trends.csv")
+dl_data_table = read.csv("input/deep_learning_trends.csv")
 big_data_table = read.csv("input/big_data_trends.csv")
 ```
 
-## "Analysis"
+## Keyword #1: "Analysis"
 
 The most interesting here is probably that the influence of R seems to plateau out.
 
-```{r}
+```{r echo=FALSE}
 counts <- rbind(R=analysis_table$R, Python = analysis_table$Python, Java = analysis_table$Java)
 colnames(counts) <- analysis_table$Year
 
@@ -41,7 +48,7 @@ barplot(counts,
   main='\'Analysis\' related repositories on Github',
   xlim = c(0, ncol(counts) * nrow(counts) + 9),
   xlab="Year of creation", 
-  col=c("darkblue","red", "green"),
+  col=c("red", "darkblue", "green"),
  	legend.text = rownames(counts), 
   beside = TRUE,
   args.legend = (x=ncol(counts) + 3))
@@ -50,13 +57,13 @@ kable(counts)
 
 ```
 
-For some, the likely surprise of the (currently fractional) year 2016 may also be that Python (at leat in this aspect) seems to be overtaking the lead in being the prime vehicle for analytics from R. Beyond that, both are strong candidates and Python is obviously involved in more analysis related libraries than R, which is just one of the reasons to scratch our heads whether to accept such finding as a fact. However, probably not many are that surprised, and this is just what it is. The R ecosystem needs to pull itself together quick if it wants to achieve more than to see the Python train passing.
+For some, the likely surprise of the (currently fractional) year 2016 may also be that Python (at least in this aspect) seems to be overtaking the lead in being the prime vehicle for analytics from R. Beyond that, both are strong candidates and Python is obviously involved in more analysis related libraries than R (part of the perceived growth is that it is probably catching up), which is just one of the reasons to scratch our heads whether to accept such finding as a fact. However, probably not many are that surprised, and this is just what it is. The R ecosystem needs to pull itself together quick if it wants to achieve more than to see the Python train passing.
 
 (Note that GitHub is a distorted representation - a large proportion of the repositories is simple coursework... but also mind that coursework is a good predictor of future preference.)
 
-## "Spark"
+## Keyword #2: "Spark"
 
-```{r}
+```{r echo=FALSE}
 counts <- rbind(Python = spark_table$Python, Java = spark_table$Java, Scala = spark_table$Scala)
 colnames(counts) <- spark_table$Year
 
@@ -64,7 +71,7 @@ barplot(counts,
   main='\'Spark\' related repositories on Github',
   xlim = c(0, ncol(counts) * nrow(counts) + 9),
   xlab="Year of creation", 
-  col=c("darkblue","red", "green"),
+  col=c("darkblue","green","red"),
  	legend.text = rownames(counts), 
   beside = TRUE,
   args.legend = (x=ncol(counts) + 3))
@@ -82,9 +89,9 @@ See http://www.itjobswatch.co.uk/jobs/london/apache%20spark.do for the current s
 Similarly GitHub for the past 6 months indicates a trendshift, too - however due to potential seasonality issues and overwhelming Christmas laziness that's not been presented here. Next version.
 
 
-## "Machine Learning"
+## Keyword #3: "Machine Learning"
 
-```{r}
+```{r echo=FALSE}
 counts <- rbind(Python = ml_table$Python, Java = ml_table$Java, R = ml_table$R)
 colnames(counts) <- spark_table$Year
 
@@ -92,7 +99,7 @@ barplot(counts,
   main='\'Machine Learning\' related repositories on Github',
   xlim = c(0, ncol(counts) * nrow(counts) + 9),
   xlab="Year of creation", 
-  col=c("darkblue","red", "green"),
+  col=c("darkblue", "green", "red"),
  	legend.text = rownames(counts), 
   beside = TRUE,
   args.legend = (x=ncol(counts) + 3))
@@ -102,9 +109,29 @@ kable(counts)
 
 I think this one needs no explanation. In my experience, GitHub repos are quite often related to online learning, and the conclusion to draw is that Python is the de facto standard of choice for teaching machine learning. 
 
+## Keyword #4: "Deep Learning"
+
+```{r echo=FALSE}
+counts <- rbind("C++" = dl_data_table$C.., Java = dl_data_table$Java, MatLab = dl_data_table$MatLab,
+                Python = dl_data_table$Python)
+colnames(counts) <- spark_table$Year
+
+barplot(counts, 
+  main='\'Deep Learning\' related repositories on Github',
+  xlim = c(0, ncol(counts) * nrow(counts) + 9),
+  xlab="Year of creation", 
+  col=c("red", "green", "yellow", "darkblue"),
+ 	legend.text = rownames(counts), 
+  beside = TRUE,
+  args.legend = (x=ncol(counts) + 3))
+
+kable(counts)
+```
+
+
 ## +1: "Big Data"
 
-```{r}
+```{r echo=FALSE}
 counts <- rbind(Python = big_data_table$Python, Java = big_data_table$Java, R = big_data_table$R,
                 Scala = big_data_table$Scala)
 colnames(counts) <- spark_table$Year
@@ -113,7 +140,7 @@ barplot(counts,
   main='\'Big Data\' related repositories on Github',
   xlim = c(0, ncol(counts) * nrow(counts) + 9),
   xlab="Year of creation", 
-  col=c("darkblue","red", "green", "yellow"),
+  col=c("darkblue", "green", "yellow", "red"),
  	legend.text = rownames(counts), 
   beside = TRUE,
   args.legend = (x=ncol(counts) + 3))
@@ -123,5 +150,9 @@ kable(counts)
 
 # Conclusion
 
-At the minute, it seems, Python for the win.
-It appears to be of significant presence or sheer dominance in every single aspect examined above.
+Python.
+
+At the minute, it seems, if you only choose one programming language for analytics (however overly idealized that may be), or about to choose your first one, it is Python for the win.
+It appears to be of significant presence (transferrable) or sheer dominance (hard to dismiss) in every single aspect examined above.
+And you won't be alone with using it.
+There are lots of thigns to work out in such an exploding ecosystem, and in the best case you're part of the happenings.
