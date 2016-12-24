@@ -1,11 +1,16 @@
--   [Executive Conjecture](#executive-conjecture)
--   [Introduction](#introduction)
--   [Keyword \#1: "Analysis"](#keyword-1-analysis)
--   [Keyword \#2: "Spark"](#keyword-2-spark)
--   [Keyword \#3: "Machine Learning"](#keyword-3-machine-learning)
--   [Keyword \#4: "Deep Learning"](#keyword-4-deep-learning)
--   [+1: "Big Data"](#big-data)
--   [Conclusion](#conclusion)
+-   [A Language for Analytics and Algorithms
+    (working draft)](#a-language-for-analytics-and-algorithms-working-draft)
+    -   [Executive Conjecture](#executive-conjecture)
+    -   [Introduction](#introduction)
+    -   [Keyword \#1: "Analysis"](#keyword-1-analysis)
+    -   [Keyword \#2: "Spark"](#keyword-2-spark)
+    -   [Keyword \#3: "Machine Learning"](#keyword-3-machine-learning)
+    -   [Keyword \#4: "Deep Learning"](#keyword-4-deep-learning)
+    -   [+1: "Big Data"](#big-data)
+    -   [Conclusion](#conclusion)
+
+A Language for Analytics and Algorithms (working draft)
+=======================================================
 
 Executive Conjecture
 --------------------
@@ -291,12 +296,12 @@ Keyword \#4: "Deep Learning"
 </table>
 
 Conclusion
-==========
+----------
 
 Python.
 
 At the minute, it seems, if you only choose one programming language for
-analytics (however overly idealized that situationmay be), or about to
+analytics (however overly idealized that situation may be), or about to
 choose your first one, it is Python for the win. It appears to be of
 significant presence (transferrable) or sheer dominance (hard to
 dismiss) in every single aspect examined above. And you won't be alone

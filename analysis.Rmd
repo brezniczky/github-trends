@@ -7,6 +7,8 @@ output:
     toc: true
 ---
 
+# A Language for Analytics and Algorithms (working draft)
+
 ## Executive Conjecture
 
 Python.
@@ -148,7 +150,7 @@ barplot(counts,
 kable(counts)
 ```
 
-# Conclusion
+## Conclusion
 
 Python.
 
