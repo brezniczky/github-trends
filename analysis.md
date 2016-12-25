@@ -1,5 +1,5 @@
 -   [A Language for Analytics and Algorithms
-    (working draft)](#a-language-for-analytics-and-algorithms-working-draft)
+    (Working Draft)](#a-language-for-analytics-and-algorithms-working-draft)
     -   [Executive Conjecture](#executive-conjecture)
     -   [Introduction](#introduction)
     -   [Keyword \#1: "Analysis"](#keyword-1-analysis)
@@ -9,7 +9,7 @@
     -   [+1: "Big Data"](#big-data)
     -   [Conclusion](#conclusion)
 
-A Language for Analytics and Algorithms (working draft)
+A Language for Analytics and Algorithms (Working Draft)
 =======================================================
 
 Executive Conjecture

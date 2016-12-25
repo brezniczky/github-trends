@@ -1,5 +1,5 @@
 ---
-title: "A Language for Analytics and Algorithms (working draft)"
+title: "Picking A Language for Analytics and Algorithms (Working Draft)"
 author: "Janca"
 date: "23 December 2016"
 output:
@@ -7,7 +7,7 @@ output:
     toc: true
 ---
 
-# A Language for Analytics and Algorithms (working draft)
+# A Language for Analytics and Algorithms (Working Draft)
 
 ## Executive Conjecture
 
@@ -45,12 +45,12 @@ big_data_table = read.csv("input/big_data_trends.csv")
 format.data = function(counts, keyword, col) {
   barplot(counts, 
     main=sprintf('\'%s\' related repositories on Github', keyword),
-    xlim = c(0, ncol(counts) * nrow(counts) + 9),
+    xlim=c(0, ncol(counts) * nrow(counts) + 9),
     xlab="Year of creation", 
     col=col,
    	legend.text = rownames(counts), 
-    beside = TRUE,
-    args.legend = (x=ncol(counts) + 3))
+    beside=TRUE,
+    args.legend=(x=ncol(counts) + 3))
   
   kable(counts)
 }
@@ -97,7 +97,7 @@ Similarly GitHub for the past 6 months indicates a trendshift, too - however due
 ## Keyword #3: "Machine Learning"
 
 ```{r echo=FALSE}
-counts <- grab.columns(ml_table, c("Python", "Java", "R"))
+counts = grab.columns(ml_table, c("Python", "Java", "R"))
 
 format.data(counts, "Machine Learning", c("darkblue", "green", "red"))
 ```
@@ -107,7 +107,7 @@ I think this one needs no explanation. In my experience, GitHub repos are quite 
 ## Keyword #4: "Deep Learning"
 
 ```{r echo=FALSE}
-counts <- grab.columns(dl_data_table, c("C++", "Java", "MatLab", "Python"))
+counts = grab.columns(dl_data_table, c("C++", "Java", "MatLab", "Python"))
 
 format.data(counts, "Deep Learning", c("red", "green", "yellow", "darkblue"))
 ```
@@ -116,7 +116,7 @@ format.data(counts, "Deep Learning", c("red", "green", "yellow", "darkblue"))
 ## +1: "Big Data"
 
 ```{r echo=FALSE}
-counts <- grab.columns(big_data_table, c("Python", "Java", "R", "Scala"))
+counts = grab.columns(big_data_table, c("Python", "Java", "R", "Scala"))
 
 format.data(counts, "Big Data", col=c("darkblue", "green", "yellow", "red"))
 ```
