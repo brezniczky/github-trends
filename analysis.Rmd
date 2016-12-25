@@ -38,6 +38,7 @@ lang_table = read.csv("input/lang_trends.csv")
 spark_table = read.csv("input/spark_trends.csv")
 ml_table = read.csv("input/ml_trends.csv")
 dl_data_table = read.csv("input/deep_learning_trends.csv")
+dl_data_table$`C++` = dl_data_table$C..
 big_data_table = read.csv("input/big_data_trends.csv")
 
 # function for outputting data
@@ -54,6 +55,11 @@ format.data = function(counts, keyword, col) {
   kable(counts)
 }
 
+grab.columns = function(frame, names) {
+  counts = t(cbind(frame[names]))
+  colnames(counts) <- frame$Year
+  return(counts)
+}
 ```
 
 ## Keyword #1: "Analysis"
@@ -61,8 +67,7 @@ format.data = function(counts, keyword, col) {
 The most interesting here is probably that the influence of R seems to plateau out.
 
 ```{r echo=FALSE}
-counts <- rbind(R=analysis_table$R, Python = analysis_table$Python, Java = analysis_table$Java)
-colnames(counts) <- analysis_table$Year
+counts = grab.columns(analysis_table, c("R", "Python", "Java"))
 
 format.data(counts, "Analysis", c("red", "darkblue", "green"))
 ```
@@ -74,8 +79,7 @@ For some, the likely surprise of the (currently fractional) year 2016 may also b
 ## Keyword #2: "Spark"
 
 ```{r echo=FALSE}
-counts <- rbind(Python = spark_table$Python, Java = spark_table$Java, Scala = spark_table$Scala)
-colnames(counts) <- spark_table$Year
+counts = grab.columns(spark_table, c("Python", "Java", "Scala"))
 
 format.data(counts, "Spark", c("darkblue", "green", "red"))
 ```
@@ -93,8 +97,7 @@ Similarly GitHub for the past 6 months indicates a trendshift, too - however due
 ## Keyword #3: "Machine Learning"
 
 ```{r echo=FALSE}
-counts <- rbind(Python = ml_table$Python, Java = ml_table$Java, R = ml_table$R)
-colnames(counts) <- spark_table$Year
+counts <- grab.columns(ml_table, c("Python", "Java", "R"))
 
 format.data(counts, "Machine Learning", c("darkblue", "green", "red"))
 ```
@@ -104,9 +107,7 @@ I think this one needs no explanation. In my experience, GitHub repos are quite 
 ## Keyword #4: "Deep Learning"
 
 ```{r echo=FALSE}
-counts <- rbind("C++" = dl_data_table$C.., Java = dl_data_table$Java, 
-                MatLab = dl_data_table$MatLab, Python = dl_data_table$Python)
-colnames(counts) <- spark_table$Year
+counts <- grab.columns(dl_data_table, c("C++", "Java", "MatLab", "Python"))
 
 format.data(counts, "Deep Learning", c("red", "green", "yellow", "darkblue"))
 ```
@@ -115,9 +116,7 @@ format.data(counts, "Deep Learning", c("red", "green", "yellow", "darkblue"))
 ## +1: "Big Data"
 
 ```{r echo=FALSE}
-counts <- rbind(Python = big_data_table$Python, Java = big_data_table$Java, 
-                R = big_data_table$R, Scala = big_data_table$Scala)
-colnames(counts) <- spark_table$Year
+counts <- grab.columns(big_data_table, c("Python", "Java", "R", "Scala"))
 
 format.data(counts, "Big Data", col=c("darkblue", "green", "yellow", "red"))
 ```
