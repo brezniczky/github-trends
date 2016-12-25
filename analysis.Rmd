@@ -1,5 +1,5 @@
 ---
-title: "Picking A Language for Analytics and Algorithms (Working Draft)"
+title: "Picking a Language for Analytics and Machine Learning (Working Draft)"
 author: "Janca"
 date: "23 December 2016"
 output:
@@ -7,7 +7,7 @@ output:
     toc: true
 ---
 
-# A Language for Analytics and Algorithms (Working Draft)
+# Picking a Language for Analytics and Machine Learning (Working Draft)
 
 ## Executive Conjecture
 
