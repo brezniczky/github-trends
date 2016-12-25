@@ -28,14 +28,32 @@ above. I had to do some manual scraping to get some results quickly, hopefully n
 The "methodology" was quite simple, I searched GitHub with keywords like Analysis and Spark on a yearly basis (as much as possible), and took a note of the results in csv's.
 
 ```{r echo=FALSE}
-library(knitr)
+
 # setwd("/media/janca/Code/Prog/Github Analysis/analytics-and-hadoop-trends")
+
+# read in data
+library(knitr)
 analysis_table = read.csv("input/analysis_trends.csv")
 lang_table = read.csv("input/lang_trends.csv")
 spark_table = read.csv("input/spark_trends.csv")
 ml_table = read.csv("input/ml_trends.csv")
 dl_data_table = read.csv("input/deep_learning_trends.csv")
 big_data_table = read.csv("input/big_data_trends.csv")
+
+# function for outputting data
+format.data = function(counts, keyword, col) {
+  barplot(counts, 
+    main=sprintf('\'%s\' related repositories on Github', keyword),
+    xlim = c(0, ncol(counts) * nrow(counts) + 9),
+    xlab="Year of creation", 
+    col=col,
+   	legend.text = rownames(counts), 
+    beside = TRUE,
+    args.legend = (x=ncol(counts) + 3))
+  
+  kable(counts)
+}
+
 ```
 
 ## Keyword #1: "Analysis"
@@ -46,17 +64,7 @@ The most interesting here is probably that the influence of R seems to plateau o
 counts <- rbind(R=analysis_table$R, Python = analysis_table$Python, Java = analysis_table$Java)
 colnames(counts) <- analysis_table$Year
 
-barplot(counts, 
-  main='\'Analysis\' related repositories on Github',
-  xlim = c(0, ncol(counts) * nrow(counts) + 9),
-  xlab="Year of creation", 
-  col=c("red", "darkblue", "green"),
- 	legend.text = rownames(counts), 
-  beside = TRUE,
-  args.legend = (x=ncol(counts) + 3))
-
-kable(counts)
-
+format.data(counts, "Analysis", c("red", "darkblue", "green"))
 ```
 
 For some, the likely surprise of the (currently fractional) year 2016 may also be that Python (at least in this aspect) seems to be overtaking the lead in being the prime vehicle for analytics from R. Beyond that, both are strong candidates and Python is obviously involved in more analysis related libraries than R (part of the perceived growth is that it is probably catching up), which is just one of the reasons to scratch our heads whether to accept such finding as a fact. However, probably not many are that surprised, and this is just what it is. The R ecosystem needs to pull itself together quick if it wants to achieve more than to see the Python train passing.
@@ -69,16 +77,7 @@ For some, the likely surprise of the (currently fractional) year 2016 may also b
 counts <- rbind(Python = spark_table$Python, Java = spark_table$Java, Scala = spark_table$Scala)
 colnames(counts) <- spark_table$Year
 
-barplot(counts, 
-  main='\'Spark\' related repositories on Github',
-  xlim = c(0, ncol(counts) * nrow(counts) + 9),
-  xlab="Year of creation", 
-  col=c("darkblue","green","red"),
- 	legend.text = rownames(counts), 
-  beside = TRUE,
-  args.legend = (x=ncol(counts) + 3))
-
-kable(counts)
+format.data(counts, "Spark", c("darkblue", "green", "red"))
 ```
 
 Scala steadily seems to be the major player at Spark.
@@ -97,16 +96,7 @@ Similarly GitHub for the past 6 months indicates a trendshift, too - however due
 counts <- rbind(Python = ml_table$Python, Java = ml_table$Java, R = ml_table$R)
 colnames(counts) <- spark_table$Year
 
-barplot(counts, 
-  main='\'Machine Learning\' related repositories on Github',
-  xlim = c(0, ncol(counts) * nrow(counts) + 9),
-  xlab="Year of creation", 
-  col=c("darkblue", "green", "red"),
- 	legend.text = rownames(counts), 
-  beside = TRUE,
-  args.legend = (x=ncol(counts) + 3))
-
-kable(counts)
+format.data(counts, "Machine Learning", c("darkblue", "green", "red"))
 ```
 
 I think this one needs no explanation. In my experience, GitHub repos are quite often related to online learning, and the conclusion to draw is that Python is the de facto standard of choice for teaching machine learning. 
@@ -114,40 +104,22 @@ I think this one needs no explanation. In my experience, GitHub repos are quite 
 ## Keyword #4: "Deep Learning"
 
 ```{r echo=FALSE}
-counts <- rbind("C++" = dl_data_table$C.., Java = dl_data_table$Java, MatLab = dl_data_table$MatLab,
-                Python = dl_data_table$Python)
+counts <- rbind("C++" = dl_data_table$C.., Java = dl_data_table$Java, 
+                MatLab = dl_data_table$MatLab, Python = dl_data_table$Python)
 colnames(counts) <- spark_table$Year
 
-barplot(counts, 
-  main='\'Deep Learning\' related repositories on Github',
-  xlim = c(0, ncol(counts) * nrow(counts) + 9),
-  xlab="Year of creation", 
-  col=c("red", "green", "yellow", "darkblue"),
- 	legend.text = rownames(counts), 
-  beside = TRUE,
-  args.legend = (x=ncol(counts) + 3))
-
-kable(counts)
+format.data(counts, "Deep Learning", c("red", "green", "yellow", "darkblue"))
 ```
 
 
 ## +1: "Big Data"
 
 ```{r echo=FALSE}
-counts <- rbind(Python = big_data_table$Python, Java = big_data_table$Java, R = big_data_table$R,
-                Scala = big_data_table$Scala)
+counts <- rbind(Python = big_data_table$Python, Java = big_data_table$Java, 
+                R = big_data_table$R, Scala = big_data_table$Scala)
 colnames(counts) <- spark_table$Year
 
-barplot(counts, 
-  main='\'Big Data\' related repositories on Github',
-  xlim = c(0, ncol(counts) * nrow(counts) + 9),
-  xlab="Year of creation", 
-  col=c("darkblue", "green", "yellow", "red"),
- 	legend.text = rownames(counts), 
-  beside = TRUE,
-  args.legend = (x=ncol(counts) + 3))
-
-kable(counts)
+format.data(counts, "Big Data", col=c("darkblue", "green", "yellow", "red"))
 ```
 
 ## Conclusion
