@@ -16,9 +16,9 @@ I don't have much to do with server-side programming these days, so I'll
 let the charts speak for themselves, mostly.
 
 The method was to search for keywords using a GitHub client script over
-weekly intervals, starting from 2008-01-01, and then using a 22 radius
-Daniel k-filter plot some comprehensibly smooth charts and compensate
-for likely seasonality effects.
+weekly intervals, starting from 2008-01-01, and then using a 26 week
+radius Daniel k-filter to plot some comprehensibly smooth charts and
+somewhat compensate for likely seasonality effects.
 
 The [Wikipedia Diffusion of
 innovations](https://en.wikipedia.org/wiki/Diffusion_of_innovations)
