@@ -25,7 +25,9 @@ This analysis is aimed at getting some indication of the trends, but by no means
 The present version attempts to achieve even less - to be a starting point for the 
 above. I had to do some manual scraping to get some results quickly, hopefully no error has been made, a more streamlined approach is to follow later.
 
-The "methodology" was quite simple, I searched GitHub with keywords like Analysis and Spark on a yearly basis (as much as possible), and took a note of the results in csv's.
+To gather the data, a GitHub API client script was used to obtain weekly statistics, then a Daniel k-filter was applied to get values smoothed over 53-week windows to get visually comprehensible charts.
+The results make it clearer than yearly data what happens with R and Python in the 'Analysis' section.
+The R vs. 'Analysis' numbers clearly feature an outlier, it is yet to be looked into what event this corresponds with.
 
 ```{r echo=FALSE}
 
@@ -34,37 +36,61 @@ The "methodology" was quite simple, I searched GitHub with keywords like Analysi
 # read in data
 library(knitr)
 
-# function for outputting data
-format.data = function(counts, keyword, col) {
-  barplot(counts, 
-    main=sprintf('\'%s\' related repositories on Github', keyword),
-    xlim=c(0, ncol(counts) * nrow(counts) + 9),
-    xlab="Year of creation", 
-    col=col,
-   	legend.text = rownames(counts), 
-    beside=TRUE,
-    args.legend=(x=ncol(counts) + 3))
-  
-  kable(counts)
-}
+all.cols = c("blue", "darkgreen", "yellow", "red")
 
-grab.columns = function(filename, names, transform) {
-  frame = read.csv(sprintf("input/%s", filename))
-  if (!missing(transform)) {
-    if (length(transform) != 2) {
-      stop("Invalid transform length.")
+start.date = as.Date("2008-01-01")
+
+load("intermediate/results.RData")
+
+smooth.plot = function(raw.values, main) {
+  # 53 wide kernel filter is used, close enough to
+  # a yearly basis, which is relatively robust against
+  # seasonality based fluctuations
+  k1 = kernel("daniell", 26)
+
+  # keep recurring items at well-defined locations to
+  # enhance readability and colour coding based consistency
+  move.to = function(n, item, target.idx) {
+    idx = which(n == item)
+    if (length(idx) > 0) {
+      n[idx] = n[target.idx]
+      n[target.idx] = item
     }
-    orig = transform[1]
-    new  = transform[2]
-    colnames(frame)[colnames(frame) == orig] = new
+    return(n)
   }
-  counts = t(cbind(frame[names]))
-  colnames(counts) <- frame$Year
-  return(counts)
+  
+  n = names(raw.values)
+  n = move.to(n, "Python", 1)
+  n = move.to(n, "R", 2)
+  n = move.to(n, "Java", 3)
+  raw.values = raw.values[n]
+  
+  values = list()
+  for(name in names(raw.values)) {
+    values[[name]] = 52 * kernapply(raw.values[[name]], k1)
+  }
+  
+  ymax = max(unlist(sapply(values, max)))
+  ymin = min(unlist(sapply(values, min)))
+  
+  xs = start.date + 0:(length(values[[1]]) - 1) * 7
+  mx.values = do.call(cbind, values)
+  cols = all.cols[1:ncol(mx.values)]
+  matplot(xs,
+          mx.values, ylim=c(ymin, ymax), type="l",
+          ylab="", xlab="", xaxt="n",
+          main=sprintf("'%s' repositories created on GitHub per year (est.)", main),
+          # legend=rownames(values),
+          # beside=TRUE,
+          # args.legend=(x=ncol(counts) + 3),
+          col=cols, lty=1, las=2, bty="n")
+  # xs = xs[1 + round((0 : 7) * (length(xs) - 1) / 7)]
+  xs = as.Date(c("2008-01-15", "2009-01-15", "2010-01-15", "2011-01-15", "2012-01-15", "2013-01-15", "2014-01-15", "2015-01-15", "2016-01-15"))
+  timelabels=format(xs,"%Y-%m")  #%H:%M
+  axis(1, at=xs, labels=timelabels, las=2, xlim=c(min(xs), max(xs)))
+  legend(xs[1] - 100, max(do.call(c, values)), legend=names(values), col=cols, bty="n",
+         lwd=2, lty=1)
 }
-
-counts = grab.columns("deep_learning_trends.csv", c("C++", "Java", "MatLab", "Python"),
-                      transform=c("C..", "C++"))
 ```
 
 ## Keyword #1: "Analysis"
@@ -72,9 +98,7 @@ counts = grab.columns("deep_learning_trends.csv", c("C++", "Java", "MatLab", "Py
 The most interesting here is probably that the influence of R seems to plateau out.
 
 ```{r echo=FALSE}
-counts = grab.columns("analysis_trends.csv", c("R", "Python", "Java"))
-
-format.data(counts, "Analysis", c("red", "darkblue", "green"))
+smooth.plot(results$Analysis, "Analysis")
 ```
 
 For some, the likely surprise of the (currently fractional) year 2016 may also be that Python (at least in this aspect) seems to be overtaking the lead in being the prime vehicle for analytics from R. Beyond that, both are strong candidates and Python is obviously involved in more analysis related libraries than R (part of the perceived growth is that it is probably catching up), which is just one of the reasons to scratch our heads whether to accept such finding as a fact. However, probably not many are that surprised, and this is just what it is. The R ecosystem needs to pull itself together quick if it wants to achieve more than to see the Python train passing.
@@ -84,9 +108,7 @@ For some, the likely surprise of the (currently fractional) year 2016 may also b
 ## Keyword #2: "Spark"
 
 ```{r echo=FALSE}
-counts = grab.columns("spark_trends.csv", c("Python", "Java", "Scala"))
-
-format.data(counts, "Spark", c("darkblue", "green", "red"))
+smooth.plot(results$Spark, "Spark")
 ```
 
 Scala steadily seems to be the major player at Spark.
@@ -102,9 +124,7 @@ Similarly GitHub for the past 6 months indicates a trendshift, too - however due
 ## Keyword #3: "Machine Learning"
 
 ```{r echo=FALSE}
-counts = grab.columns("ml_trends.csv", c("Python", "Java", "R"))
-
-format.data(counts, "Machine Learning", c("darkblue", "green", "red"))
+smooth.plot(results$`Machine Learning`, "Machine Learning")
 ```
 
 I think this one needs no explanation. In my experience, GitHub repos are quite often related to online learning, and the conclusion to draw is that Python is the de facto standard of choice for teaching machine learning. 
@@ -112,19 +132,14 @@ I think this one needs no explanation. In my experience, GitHub repos are quite 
 ## Keyword #4: "Deep Learning"
 
 ```{r echo=FALSE}
-counts = grab.columns("deep_learning_trends.csv", c("C++", "Java", "MatLab", "Python"),
-                      transform=c("C..", "C++"))
-
-format.data(counts, "Deep Learning", c("red", "green", "yellow", "darkblue"))
+smooth.plot(results$`Deep Learning`, "Deep Learning")
 ```
 
 
 ## +1: "Big Data"
 
 ```{r echo=FALSE}
-counts = grab.columns("big_data_trends.csv", c("Python", "Java", "R", "Scala"))
-
-format.data(counts, "Big Data", col=c("darkblue", "green", "yellow", "red"))
+smooth.plot(results$`Big Data`, "Big Data")
 ```
 
 ## Conclusion

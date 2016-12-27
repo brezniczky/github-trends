@@ -74,4 +74,4 @@ for(keyword in names(searches)) {
     results[[keyword]][[language]] = counts
   }
 }
-save(file="results.RData", results)
+save(file="intermediate/results.RData", results)
