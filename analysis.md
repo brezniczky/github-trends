@@ -59,7 +59,10 @@ it is probably catching up), which is just one of the reasons to scratch
 our heads whether to accept such finding as a fact. However, probably
 not many are that surprised, and this is just what it is. The R
 ecosystem needs to pull itself together quick if it wants to achieve
-more than to see the Python train passing.
+more than to see the Python train passing. Python seems to be in the
+early adoption/early majority phase, which signifies a prospect for
+heavy future growth in this area. (See
+[Wikipedia](https://en.wikipedia.org/wiki/Diffusion_of_innovations).)
 
 (Note that GitHub is a distorted representation - a large proportion of
 the repositories is simple coursework... but also mind that coursework
@@ -97,7 +100,9 @@ Keyword \#3: "Machine Learning"
 I think this one needs no explanation. In my experience, GitHub repos
 are quite often related to online learning, and the conclusion to draw
 is that Python is the de facto standard of choice for teaching machine
-learning.
+learning. One remarkable aspect is perhaps that the growth is beautfully
+exponential - it is typically an early phase of an adoption curve,
+again.
 
 Keyword \#4: "Deep Learning"
 ----------------------------

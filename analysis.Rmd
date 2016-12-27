@@ -38,7 +38,8 @@ library(knitr)
 
 all.cols = c("blue", "darkgreen", "yellow", "red")
 
-start.date = as.Date("2008-01-01")
+# do not forget the k-filter's radius
+start.date = as.Date("2008-01-01") + 22 * 7
 
 load("intermediate/results.RData")
 
@@ -85,7 +86,7 @@ smooth.plot = function(raw.values, main) {
           # args.legend=(x=ncol(counts) + 3),
           col=cols, lty=1, las=2, bty="n")
   # xs = xs[1 + round((0 : 7) * (length(xs) - 1) / 7)]
-  xs = as.Date(c("2008-01-15", "2009-01-15", "2010-01-15", "2011-01-15", "2012-01-15", "2013-01-15", "2014-01-15", "2015-01-15", "2016-01-15"))
+  xs = c(as.Date(c("2008-06-15", "2009-06-15", "2010-06-15", "2011-06-15", "2012-06-15", "2013-06-15", "2014-06-15", "2015-06-15", "2016-06-15")))
   timelabels=format(xs,"%Y-%m")  #%H:%M
   axis(1, at=xs, labels=timelabels, las=2, xlim=c(min(xs), max(xs)))
   legend(xs[1] - 100, max(do.call(c, values)), legend=names(values), col=cols, bty="n",
@@ -101,7 +102,7 @@ The most interesting here is probably that the influence of R seems to plateau o
 smooth.plot(results$Analysis, "Analysis")
 ```
 
-For some, the likely surprise of the (currently fractional) year 2016 may also be that Python (at least in this aspect) seems to be overtaking the lead in being the prime vehicle for analytics from R. Beyond that, both are strong candidates and Python is obviously involved in more analysis related libraries than R (part of the perceived growth is that it is probably catching up), which is just one of the reasons to scratch our heads whether to accept such finding as a fact. However, probably not many are that surprised, and this is just what it is. The R ecosystem needs to pull itself together quick if it wants to achieve more than to see the Python train passing.
+For some, the likely surprise of the (currently fractional) year 2016 may also be that Python (at least in this aspect) seems to be overtaking the lead in being the prime vehicle for analytics from R. Beyond that, both are strong candidates and Python is obviously involved in more analysis related libraries than R (part of the perceived growth is that it is probably catching up), which is just one of the reasons to scratch our heads whether to accept such finding as a fact. However, probably not many are that surprised, and this is just what it is. The R ecosystem needs to pull itself together quick if it wants to achieve more than to see the Python train passing. Python seems to be in the early adoption/early majority phase, which signifies a prospect for heavy future growth in this area. (See [Wikipedia](https://en.wikipedia.org/wiki/Diffusion_of_innovations).)
 
 (Note that GitHub is a distorted representation - a large proportion of the repositories is simple coursework... but also mind that coursework is a good predictor of future preference.)
 
@@ -127,7 +128,8 @@ Similarly GitHub for the past 6 months indicates a trendshift, too - however due
 smooth.plot(results$`Machine Learning`, "Machine Learning")
 ```
 
-I think this one needs no explanation. In my experience, GitHub repos are quite often related to online learning, and the conclusion to draw is that Python is the de facto standard of choice for teaching machine learning. 
+I think this one needs no explanation. In my experience, GitHub repos are quite often related to online learning, and the conclusion to draw is that Python is the de facto standard of choice for teaching machine learning.
+One remarkable aspect is perhaps that the growth is beautfully exponential - it is typically an early phase of an adoption curve, again.
 
 ## Keyword #4: "Deep Learning"
 
