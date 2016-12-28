@@ -25,7 +25,7 @@ This analysis is aimed at getting some indication of the trends, but by no means
 The present version attempts to achieve even less - to be a starting point for the 
 above. I had to do some manual scraping to get some results quickly, hopefully no error has been made, a more streamlined approach is to follow later.
 
-To gather the data, a GitHub API client script was used to obtain weekly statistics, then a Daniel k-filter was applied to get values smoothed over 53-week windows to get visually comprehensible charts.
+To gather the data, a GitHub API client script was used to obtain weekly statistics, then a moving average was applied to get values smoothed over 53-week windows to get visually comprehensible charts and compensate for seasonality effects.
 The results make it clearer than yearly data what happens with R and Python in the 'Analysis' section.
 The R vs. 'Analysis' numbers clearly feature an outlier, it is yet to be looked into what event this corresponds with.
 
@@ -36,7 +36,7 @@ The R vs. 'Analysis' numbers clearly feature an outlier, it is yet to be looked 
 # read in data
 library(knitr)
 
-all.cols = c("blue", "darkgreen", "yellow", "red")
+all.cols = c("blue", "darkgreen", "yellow", "red", "purple", "orange")
 
 # do not forget the k-filter's radius
 start.date = as.Date("2008-01-01") + 22 * 7
@@ -138,11 +138,30 @@ smooth.plot(results$`Deep Learning`, "Deep Learning")
 ```
 
 
-## +1: "Big Data"
+## Keyword #5: "Big Data"
 
 ```{r echo=FALSE}
 smooth.plot(results$`Big Data`, "Big Data")
 ```
+
+## Keyword #6: "AWS"
+
+```{r echo=FALSE}
+smooth.plot(results$`AWS`, "AWS")
+```
+
+## +1: "Kaggle"
+
+```{r echo=FALSE}
+smooth.plot(results$`Kaggle`, "Kaggle")
+```
+
+## Future work
+
+JavaWScript and HTML have notoriously been omitted from these statistics. 
+These are considered the presentation in this analysis and thus not the 'active ingredient'.
+However, means presentation are an important factor of analysis, and their merits will be re-evaluated.
+Another problematic aspect is that repositories are normally multi-lingual, thus "intersection sets" will need to be checked on and accounted for.
 
 ## Conclusion
 

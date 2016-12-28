@@ -6,7 +6,10 @@
     -   [Keyword \#2: "Spark"](#keyword-2-spark)
     -   [Keyword \#3: "Machine Learning"](#keyword-3-machine-learning)
     -   [Keyword \#4: "Deep Learning"](#keyword-4-deep-learning)
-    -   [+1: "Big Data"](#big-data)
+    -   [Keyword \#5: "Big Data"](#keyword-5-big-data)
+    -   [Keyword \#6: "AWS"](#keyword-6-aws)
+    -   [+1: "Kaggle"](#kaggle)
+    -   [Future work](#future-work)
     -   [Conclusion](#conclusion)
 
 Picking a Language for Analytics and Machine Learning (Working Draft)
@@ -36,11 +39,12 @@ results quickly, hopefully no error has been made, a more streamlined
 approach is to follow later.
 
 To gather the data, a GitHub API client script was used to obtain weekly
-statistics, then a Daniel k-filter was applied to get values smoothed
-over 53-week windows to get visually comprehensible charts. The results
-make it clearer than yearly data what happens with R and Python in the
-'Analysis' section. The R vs. 'Analysis' numbers clearly feature an
-outlier, it is yet to be looked into what event this corresponds with.
+statistics, then a moving average was applied to get values smoothed
+over 53-week windows to get visually comprehensible charts and
+compensate for seasonality effects. The results make it clearer than
+yearly data what happens with R and Python in the 'Analysis' section.
+The R vs. 'Analysis' numbers clearly feature an outlier, it is yet to be
+looked into what event this corresponds with.
 
 Keyword \#1: "Analysis"
 -----------------------
@@ -109,10 +113,31 @@ Keyword \#4: "Deep Learning"
 
 ![](analysis_files/figure-markdown_strict/unnamed-chunk-5-1.png)
 
-+1: "Big Data"
---------------
+Keyword \#5: "Big Data"
+-----------------------
 
 ![](analysis_files/figure-markdown_strict/unnamed-chunk-6-1.png)
+
+Keyword \#6: "AWS"
+------------------
+
+![](analysis_files/figure-markdown_strict/unnamed-chunk-7-1.png)
+
++1: "Kaggle"
+------------
+
+![](analysis_files/figure-markdown_strict/unnamed-chunk-8-1.png)
+
+Future work
+-----------
+
+JavaWScript and HTML have notoriously been omitted from these
+statistics. These are considered the presentation in this analysis and
+thus not the 'active ingredient'. However, means presentation are an
+important factor of analysis, and their merits will be re-evaluated.
+Another problematic aspect is that repositories are normally
+multi-lingual, thus "intersection sets" will need to be checked on and
+accounted for.
 
 Conclusion
 ----------

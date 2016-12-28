@@ -16,7 +16,9 @@ searches =
     Analysis = c("R", "Python", "Java"),
     Spark = c("Python", "Java", "Scala"),
     "Deep Learning" = c("C++", "Java", "MatLab", "Python"),
-    "Big Data" = c("Python", "Java", "R", "Scala")
+    "Big Data" = c("Python", "Java", "R", "Scala"),
+    "Kaggle" = c("Python", "R", "Matlab", "Java"),
+    "AWS" = c("JavaScript", "Python", "Ruby", "Java", "PHP", "go")
   )
 
 start.date = as.Date("2008-01-01")
@@ -33,7 +35,7 @@ for(keyword in names(searches)) {
 
     print(sprintf("keyword: %s language: %s", keyword, language))
 
-    row.cache.filename = sprintf("%s %s created weekly.csv",  keyword, language)
+    row.cache.filename = sprintf("intermediate/%s %s created weekly.csv",  keyword, language)
 
     if (file.exists(row.cache.filename)) {
       df = read.csv(row.cache.filename)
