@@ -14,7 +14,7 @@ output:
 # read in data
 library(knitr)
 
-all.cols = c("blue", "darkgreen", "red", "green", "black", "yellow")
+all.cols = c("blue", "darkgreen", "red", "green", "black", "yellow", "purple", "brown", "orange")
 
 # do not forget the k-filter's radius
 start.date = as.Date("2008-01-01") + 22 * 7
@@ -79,7 +79,7 @@ smooth.plot = function(raw.values, main) {
 
 I don't have much to do with server-side programming these days, so I'll let the charts speak for themselves, mostly.
 
-The method was to search for keywords using a GitHub client script over weekly intervals, starting from 2008-01-01, and then using a 26 week radius Daniel k-filter to plot some comprehensibly smooth charts and somewhat compensate for likely seasonality effects.
+The method was to search for keywords using a GitHub client script over weekly intervals, starting from 2008-01-01, and then using a 53 week moving average to plot some comprehensibly smooth charts and somewhat compensate for likely seasonality effects.
 
 The [Wikipedia Diffusion of innovations](https://en.wikipedia.org/wiki/Diffusion_of_innovations) article may give some ideas what curve types we see on the charts, however it is hard to decide the impregnation of what area(s) are described by each curve from merely these graphs, and to find out which of these, if any, have already started to reach into the flattening out (late majority) phase.
 
@@ -87,6 +87,12 @@ The [Wikipedia Diffusion of innovations](https://en.wikipedia.org/wiki/Diffusion
 
 ```{r echo=FALSE}
 smooth.plot(results$Server, "Server")
+```
+
+## Keyword #1: "Web Server"
+
+```{r echo=FALSE}
+smooth.plot(results$`Web Server`, "Web Server")
 ```
 
 ## Keyword #2: "Service"
@@ -100,6 +106,10 @@ smooth.plot(results$Service, "Service")
 ```{r echo=FALSE}
 smooth.plot(results$`Microservice`, "Microservice")
 ```
+
+## Future work
+
+A problematic aspect is that repositories are normally multi-lingual, thus "intersection sets" will need to be checked on and accounted for.
 
 ## Conclusion
 

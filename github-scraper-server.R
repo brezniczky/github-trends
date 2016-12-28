@@ -10,11 +10,13 @@ myapp <- oauth_app("github",
 github_token <- oauth2.0_token(oauth_endpoints("github"), myapp)
 gtoken <- config(token = github_token)
 
+all.languages = c("Python", "go", "C", "C++", "C#", "Java", "PHP", "Ruby", "JavaScript")
 searches =
   list(
-    Server = c("Python", "go", "C", "C++", "C#", "Java"),
-    Microservice = c("Python", "go", "C", "C++", "C#", "Java"),
-    Service = c("Python", "go", "C", "C++", "C#", "Java")
+    Server       = all.languages,
+    Microservice = all.languages,
+    Service      = all.languages,
+    "Web Server" = all.languages
   )
 
 start.date = as.Date("2008-01-01")
