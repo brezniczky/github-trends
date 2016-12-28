@@ -1,3 +1,5 @@
 .Rhistory
 .httr-oauth
 backup/
+intermediate/*.csv
+intermediate_server/*.csv
