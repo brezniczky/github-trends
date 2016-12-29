@@ -1,7 +1,7 @@
 ---
 title: "Picking a Language for Server-Side Programming (Working Draft)"
-author: "Janca"
-date: "23 December 2016"
+author: "Janos Brezniczky"
+date: "December 2016"
 output:
   md_document:
     toc: true
@@ -15,6 +15,9 @@ load("intermediate_server/results.RData")
 ```
 
 # Picking a Language for Server-Side Programming (Working Draft)
+
+Janos Brezniczky
+December, 2016
 
 ## Introduction
 
@@ -54,7 +57,4 @@ A problematic aspect is that repositories are normally multi-lingual, thus "inte
 
 ## Conclusion
 
-No conclusion here - choose whatever best fits.
-
-Note: PHP and JavaScript (or derivatives, like Node.JS) have probably been unreasonably left out from the above comparisons and will be added soon where relevant.
-
+No conclusion here for now - choose whatever best fits.

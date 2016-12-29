@@ -11,6 +11,8 @@
 Picking a Language for Server-Side Programming (Working Draft)
 ==============================================================
 
+Janos Brezniczky December, 2016
+
 Introduction
 ------------
 
@@ -59,8 +61,4 @@ thus "intersection sets" will need to be checked on and accounted for.
 Conclusion
 ----------
 
-No conclusion here - choose whatever best fits.
-
-Note: PHP and JavaScript (or derivatives, like Node.JS) have probably
-been unreasonably left out from the above comparisons and will be added
-soon where relevant.
+No conclusion here for now - choose whatever best fits.

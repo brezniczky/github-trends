@@ -1,13 +1,16 @@
 ---
 title: "Picking a Language for Analytics and Machine Learning (Working Draft)"
-author: "Janca"
-date: "23 December 2016"
+author: "Janos Brezniczky"
+date: "December 2016"
 output:
   md_document:
     toc: true
 ---
 
 # Picking a Language for Analytics and Machine Learning (Working Draft)
+
+Janos Brezniczky
+December, 2016
 
 ## Executive Conjecture
 

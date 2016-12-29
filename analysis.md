@@ -15,6 +15,8 @@
 Picking a Language for Analytics and Machine Learning (Working Draft)
 =====================================================================
 
+Janos Brezniczky December, 2016
+
 Executive Conjecture
 --------------------
 
