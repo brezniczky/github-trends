@@ -15,7 +15,9 @@
 Picking a Language for Analytics and Machine Learning (Working Draft)
 =====================================================================
 
-Janos Brezniczky December, 2016
+Janos Brezniczky
+
+December, 2016
 
 Executive Conjecture
 --------------------
@@ -133,13 +135,12 @@ Keyword \#6: "AWS"
 Future work
 -----------
 
-JavaWScript and HTML have notoriously been omitted from these
-statistics. These are considered the presentation in this analysis and
-thus not the 'active ingredient'. However, means presentation are an
-important factor of analysis, and their merits will be re-evaluated.
-Another problematic aspect is that repositories are normally
-multi-lingual, thus "intersection sets" will need to be checked on and
-accounted for.
+JavaScript and HTML have notoriously been omitted from these statistics.
+These are considered the presentation in this analysis and thus not the
+'active ingredient'. However, means presentation are an important factor
+of analysis, and their merits will be re-evaluated. Another problematic
+aspect is that repositories are normally multi-lingual, thus
+"intersection sets" will need to be checked on and accounted for.
 
 Conclusion
 ----------

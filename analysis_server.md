@@ -11,7 +11,9 @@
 Picking a Language for Server-Side Programming (Working Draft)
 ==============================================================
 
-Janos Brezniczky December, 2016
+Janos Brezniczky
+
+December, 2016
 
 Introduction
 ------------
@@ -57,6 +59,8 @@ Future work
 
 A problematic aspect is that repositories are normally multi-lingual,
 thus "intersection sets" will need to be checked on and accounted for.
+An interesting thing can be the synchronous jump in PHP and JavaScript
+around 2016.
 
 Conclusion
 ----------

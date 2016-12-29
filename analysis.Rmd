@@ -7,9 +7,17 @@ output:
     toc: true
 ---
 
+```{r echo=FALSE}
+# setwd("/media/janca/Code/Prog/Github Analysis/analytics-and-hadoop-trends/github-trends/")
+source("plotting.R")
+
+load("intermediate/results.RData")
+```
+
 # Picking a Language for Analytics and Machine Learning (Working Draft)
 
 Janos Brezniczky
+
 December, 2016
 
 ## Executive Conjecture
@@ -31,13 +39,6 @@ above. I had to do some manual scraping to get some results quickly, hopefully n
 To gather the data, a GitHub API client script was used to obtain weekly statistics, then a moving average was applied to get values smoothed over 53-week windows to get visually comprehensible charts and compensate for seasonality effects.
 The results make it clearer than yearly data what happens with R and Python in the 'Analysis' section.
 The R vs. 'Analysis' numbers clearly feature an outlier, it is yet to be looked into what event this corresponds with.
-
-```{r echo=FALSE}
-# setwd("/media/janca/Code/Prog/Github Analysis/analytics-and-hadoop-trends/github-trends/")
-source("plotting.R")
-
-load("intermediate/results.RData")
-```
 
 ## Keyword #1: "Analysis"
 
@@ -103,7 +104,7 @@ smooth.plot(results$`Kaggle`, "Kaggle")
 
 ## Future work
 
-JavaWScript and HTML have notoriously been omitted from these statistics. 
+JavaScript and HTML have notoriously been omitted from these statistics. 
 These are considered the presentation in this analysis and thus not the 'active ingredient'.
 However, means presentation are an important factor of analysis, and their merits will be re-evaluated.
 Another problematic aspect is that repositories are normally multi-lingual, thus "intersection sets" will need to be checked on and accounted for.
