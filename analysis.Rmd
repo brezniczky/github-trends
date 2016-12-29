@@ -30,7 +30,7 @@ The results make it clearer than yearly data what happens with R and Python in t
 The R vs. 'Analysis' numbers clearly feature an outlier, it is yet to be looked into what event this corresponds with.
 
 ```{r echo=FALSE}
-# setwd("/media/janca/Code/Prog/Github Analysis/analytics-and-hadoop-trends")
+# setwd("/media/janca/Code/Prog/Github Analysis/analytics-and-hadoop-trends/github-trends/")
 source("plotting.R")
 
 load("intermediate/results.RData")

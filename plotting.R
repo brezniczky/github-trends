@@ -1,4 +1,4 @@
-all.cols = c("blue", "darkgreen", "yellow", "red", "purple", "orange")
+all.cols = c("blue", "darkgreen", "green", "purple", "red", "brown", "orange", "black", "yellow")
 
 # do not forget the k-filter's radius
 start.date = as.Date("2008-01-01") + 22 * 7
@@ -19,11 +19,18 @@ smooth.plot = function(raw.values, main) {
     }
     return(n)
   }
-  
+
+  # TODO: this colour preference assignment needs to be thought through  
   n = names(raw.values)
   n = move.to(n, "Python", 1)
   n = move.to(n, "R", 2)
   n = move.to(n, "Java", 3)
+  n = move.to(n, "C#", 4)
+  n = move.to(n, "go", 5)
+  # sometimes there are fewer/not all of them are present
+  # remove wrongly inserted empty cells
+  n = n[!is.na(n)]
+  
   raw.values = raw.values[n]
   
   values = list()
