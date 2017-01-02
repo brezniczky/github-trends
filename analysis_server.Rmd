@@ -34,19 +34,19 @@ The [Wikipedia Diffusion of innovations](https://en.wikipedia.org/wiki/Diffusion
 smooth.plot(results$Server, "Server")
 ```
 
-## Keyword #1: "Web Server"
+## Keyword #2: "Web Server"
 
 ```{r echo=FALSE, fig.width=10}
 smooth.plot(results$`Web Server`, "Web Server")
 ```
 
-## Keyword #2: "Service"
+## Keyword #3: "Service"
 
 ```{r echo=FALSE, fig.width=10}
 smooth.plot(results$Service, "Service")
 ```
 
-## Keyword #3: "Microservice"
+## Keyword #4: "Microservice"
 
 ```{r echo=FALSE, fig.width=10}
 smooth.plot(results$`Microservice`, "Microservice")

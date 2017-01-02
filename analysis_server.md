@@ -2,9 +2,9 @@
     (Working Draft)](#picking-a-language-for-server-side-programming-working-draft)
     -   [Introduction](#introduction)
     -   [Keyword \#1: "Server"](#keyword-1-server)
-    -   [Keyword \#1: "Web Server"](#keyword-1-web-server)
-    -   [Keyword \#2: "Service"](#keyword-2-service)
-    -   [Keyword \#3: "Microservice"](#keyword-3-microservice)
+    -   [Keyword \#2: "Web Server"](#keyword-2-web-server)
+    -   [Keyword \#3: "Service"](#keyword-3-service)
+    -   [Keyword \#4: "Microservice"](#keyword-4-microservice)
     -   [Future work](#future-work)
     -   [Conclusion](#conclusion)
 
@@ -39,17 +39,17 @@ Keyword \#1: "Server"
 
 ![](analysis_server_files/figure-markdown_strict/unnamed-chunk-2-1.png)
 
-Keyword \#1: "Web Server"
+Keyword \#2: "Web Server"
 -------------------------
 
 ![](analysis_server_files/figure-markdown_strict/unnamed-chunk-3-1.png)
 
-Keyword \#2: "Service"
+Keyword \#3: "Service"
 ----------------------
 
 ![](analysis_server_files/figure-markdown_strict/unnamed-chunk-4-1.png)
 
-Keyword \#3: "Microservice"
+Keyword \#4: "Microservice"
 ---------------------------
 
 ![](analysis_server_files/figure-markdown_strict/unnamed-chunk-5-1.png)
