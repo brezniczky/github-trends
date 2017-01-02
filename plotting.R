@@ -3,7 +3,32 @@ all.cols = c("blue", "darkgreen", "green", "purple", "red", "brown", "orange", "
 # do not forget the k-filter's radius
 start.date = as.Date("2008-01-01") + 22 * 7
 
+
+plot.perc.of.total = function(series.list, col) {
+  agg.series = lapply(
+    series.list, FUN = function(row) {
+      time = rep(1:((length(row) + 11) / 12), each=12)
+      time = time[1:length(row)]
+      return(aggregate(row, by = list(time = time),
+                       FUN = mean)$x)
+    }
+  )
+  
+  agg.matrix = do.call(rbind, agg.series)
+  period.totals = apply(agg.matrix, MARGIN = 2, FUN = sum)
+  period.totals[period.totals == 0] = 1
+  agg.matrix = agg.matrix / rep(period.totals, each = nrow(agg.matrix)) * 100
+
+  barplot(agg.matrix, 
+          col = col, border = 0, space = 0,
+          main = "Breakdown by share (%)")
+}
+
 smooth.plot = function(raw.values, main) {
+  par(mfrow = c(2, 1))
+  
+  layout(mat = matrix(nrow = 1, data = c(1, 2)), widths = c(3, 2))
+  
   # 53 wide kernel filter is used, close enough to
   # a yearly basis, which is relatively robust against
   # seasonality based fluctuations
@@ -47,15 +72,17 @@ smooth.plot = function(raw.values, main) {
   matplot(xs,
           mx.values, ylim=c(ymin, ymax), type="l",
           ylab="", xlab="", xaxt="n",
-          main=sprintf("'%s' repositories created on GitHub per year (est.)", main),
+          main=sprintf("'%s' repositories\ncreated on GitHub per year (est.)", main),
           # legend=rownames(values),
           # beside=TRUE,
           # args.legend=(x=ncol(counts) + 3),
           col=cols, lty=1, las=2, bty="n")
-  # xs = xs[1 + round((0 : 7) * (length(xs) - 1) / 7)]
   xs = c(as.Date(c("2008-06-15", "2009-06-15", "2010-06-15", "2011-06-15", "2012-06-15", "2013-06-15", "2014-06-15", "2015-06-15", "2016-06-15")))
-  timelabels=format(xs,"%Y-%m")  #%H:%M
+  timelabels=format(xs, "%Y-%m")
   axis(1, at=xs, labels=timelabels, las=2, xlim=c(min(xs), max(xs)))
-  legend(xs[1] - 100, max(do.call(c, values)), legend=names(values), col=cols, bty="n",
+  legend(xs[1], max(do.call(c, values)), legend=names(values), col=cols, bty="n",
          lwd=2, lty=1)
+  
+  # plot.perc.of.total(mx.values, cols, xs, timelabels)
+  plot.perc.of.total(series.list = raw.values, cols)
 }

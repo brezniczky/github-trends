@@ -11,9 +11,9 @@
 Picking a Language for Server-Side Programming (Working Draft)
 ==============================================================
 
-Janos Brezniczky
+*Janos Brezniczky*
 
-December, 2016
+*January, 2016*
 
 Introduction
 ------------

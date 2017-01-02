@@ -15,9 +15,9 @@
 Picking a Language for Analytics and Machine Learning (Working Draft)
 =====================================================================
 
-Janos Brezniczky
+*Janos Brezniczky*
 
-December, 2016
+*January, 2016*
 
 Executive Conjecture
 --------------------
@@ -33,22 +33,19 @@ The competition of programming langauges is already a long story and
 continues to stretch on. Judging the topic is difficult, subjective and
 is prone to statistical methodological issues.
 
-This analysis is aimed at getting some indication of the trends, but by
+This document is aimed at getting some indication of the trends, but by
 no means to come up with a definitive result or judgement over any
 debate.
 
-The present version attempts to achieve even less - to be a starting
-point for the above. I had to do some manual scraping to get some
-results quickly, hopefully no error has been made, a more streamlined
-approach is to follow later.
+The present version is in an exploratory/draft status, and attempts to
+achieve even less - to be a starting point for the above.
 
 To gather the data, a GitHub API client script was used to obtain weekly
 statistics, then a moving average was applied to get values smoothed
 over 53-week windows to get visually comprehensible charts and
-compensate for seasonality effects. The results make it clearer than
-yearly data what happens with R and Python in the 'Analysis' section.
-The R vs. 'Analysis' numbers clearly feature an outlier, it is yet to be
-looked into what event this corresponds with.
+compensate for seasonality effects. The R vs. 'Analysis' numbers clearly
+feature an outlier, it is yet to be looked into what event this
+corresponds with.
 
 Keyword \#1: "Analysis"
 -----------------------
@@ -137,10 +134,12 @@ Future work
 
 JavaScript and HTML have notoriously been omitted from these statistics.
 These are considered the presentation in this analysis and thus not the
-'active ingredient'. However, means presentation are an important factor
-of analysis, and their merits will be re-evaluated. Another problematic
-aspect is that repositories are normally multi-lingual, thus
-"intersection sets" will need to be checked on and accounted for.
+'active ingredient'. While it is included in AWS, difficult to tell to
+what extent it was useful to be in that way. However, the means
+presentation are an important factor of analysis, and their merits will
+be re-evaluated. Another, strongly related and problematic aspect is
+that repositories are normally multi-lingual, thus "intersection sets"
+will need to be checked on and accounted for.
 
 Conclusion
 ----------

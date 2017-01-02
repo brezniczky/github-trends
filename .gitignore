@@ -1,5 +1,7 @@
+.RData
 .Rhistory
 .httr-oauth
 backup/
 intermediate/*.csv
 intermediate_server/*.csv
+analysis_server.html
