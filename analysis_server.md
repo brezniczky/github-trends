@@ -5,7 +5,7 @@
     -   [Keyword \#2: "Web Server"](#keyword-2-web-server)
     -   [Keyword \#3: "Service"](#keyword-3-service)
     -   [Keyword \#4: "Microservice"](#keyword-4-microservice)
-    -   [Future work](#future-work)
+    -   [Future Work](#future-work)
     -   [Conclusion](#conclusion)
 
 Picking a Language for Server-Side Programming (Working Draft)
@@ -54,7 +54,7 @@ Keyword \#4: "Microservice"
 
 ![](analysis_server_files/figure-markdown_strict/unnamed-chunk-5-1.png)
 
-Future work
+Future Work
 -----------
 
 A problematic aspect is that repositories are normally multi-lingual,

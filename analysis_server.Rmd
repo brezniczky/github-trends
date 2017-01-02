@@ -52,7 +52,7 @@ smooth.plot(results$Service, "Service")
 smooth.plot(results$`Microservice`, "Microservice")
 ```
 
-## Future work
+## Future Work
 
 A problematic aspect is that repositories are normally multi-lingual, thus "intersection sets" will need to be checked on and accounted for.
 An interesting thing can be the synchronous jump in PHP and JavaScript around 2016.

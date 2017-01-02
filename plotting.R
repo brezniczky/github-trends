@@ -21,7 +21,7 @@ plot.perc.of.total = function(series.list, col) {
 
   barplot(agg.matrix, 
           col = col, border = 0, space = 0,
-          main = "Breakdown by share (%)")
+          main = "Breakdown by Share (%)")
 }
 
 smooth.plot = function(raw.values, main) {
@@ -72,7 +72,7 @@ smooth.plot = function(raw.values, main) {
   matplot(xs,
           mx.values, ylim=c(ymin, ymax), type="l",
           ylab="", xlab="", xaxt="n",
-          main=sprintf("'%s' repositories\ncreated on GitHub per year (est.)", main),
+          main=sprintf("'%s' Repositories\nCreated on GitHub per Year (Est.)", main),
           # legend=rownames(values),
           # beside=TRUE,
           # args.legend=(x=ncol(counts) + 3),

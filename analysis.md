@@ -9,7 +9,8 @@
     -   [Keyword \#5: "Big Data"](#keyword-5-big-data)
     -   [Keyword \#6: "AWS"](#keyword-6-aws)
     -   [+1: "Kaggle"](#kaggle)
-    -   [Future work](#future-work)
+    -   [+2: "Coursera"](#coursera)
+    -   [Future Work](#future-work)
     -   [Conclusion](#conclusion)
 
 Picking a Language for Analytics and Machine Learning (Working Draft)
@@ -129,17 +130,34 @@ Keyword \#6: "AWS"
 
 ![](analysis_files/figure-markdown_strict/unnamed-chunk-8-1.png)
 
-Future work
++2: "Coursera"
+--------------
+
+![](analysis_files/figure-markdown_strict/unnamed-chunk-9-1.png)
+
+GitHub, the most popular free source source code repository service, is
+the vehicle for many assignments on Coursera, which then is the most
+popular MOOC, and as such, heavily affects even such a massive vehicle
+as GitHub. It already gets clear that these courses are close at the
+heart of R's popularity on GitHub, and are accountable for at least one
+significant growth period in the use of R.
+
+However, this impact is not necessarily a bad thing from the perspective
+of the analysis - future analysts are trained in the present, and so
+does their current preference drive future curves.
+
+Future Work
 -----------
 
 JavaScript and HTML have notoriously been omitted from these statistics.
-These are considered the presentation in this analysis and thus not the
-'active ingredient'. While it is included in AWS, difficult to tell to
-what extent it was useful to be in that way. However, the means
-presentation are an important factor of analysis, and their merits will
-be re-evaluated. Another, strongly related and problematic aspect is
-that repositories are normally multi-lingual, thus "intersection sets"
-will need to be checked on and accounted for.
+These are considered the presentation or output in this analysis and
+thus not the 'active ingredient'. While JavaScript is included on the
+AWS charts, it is difficult to tell to what extent it was useful to do
+so. However, the means of presentation is an important factor of an
+analysis, and its merits will be re-evaluated somehow. Another, strongly
+related and problematic aspect is that repositories are normally
+multi-lingual, thus "intersection sets" will need to be checked on and
+accounted for.
 
 Conclusion
 ----------
@@ -147,7 +165,7 @@ Conclusion
 Python.
 
 At the minute, it seems, if you only choose one programming language for
-analytics (however overly idealized that situation may be), or about to
+analytics (however over-idealistic that situation may be), or about to
 choose your first one, it is Python for the win. It appears to be of
 significant presence (transferrable) or sheer dominance (hard to
 dismiss) in every single aspect examined above. And you won't be alone

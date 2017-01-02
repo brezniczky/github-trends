@@ -2,6 +2,8 @@
 # be installed for a successful run.
 library(httr)
 
+# setwd("/media/janca/Code/Prog/Github Analysis/analytics-and-hadoop-trends/github-trends/")
+
 # from the GitHub oauth 2.0 demo of httr
 oauth_endpoints("github")
 myapp <- oauth_app("github",
@@ -18,7 +20,9 @@ searches =
     "Deep Learning" = c("C++", "Java", "MatLab", "Python"),
     "Big Data" = c("Python", "Java", "R", "Scala"),
     "Kaggle" = c("Python", "R", "Matlab", "Java"),
-    "AWS" = c("JavaScript", "Python", "Ruby", "Java", "PHP", "go")
+    "AWS" = c("JavaScript", "Python", "Ruby", "Java", "PHP", "go"),
+    "Coursera" = c("HTML", "R", "CSS", "JavaScript", "Matlab", "Java", 
+                   "Python", "Scala", "Jupyter Notebook", "Ruby")
   )
 
 start.date = as.Date("2008-01-01")
@@ -76,4 +80,5 @@ for(keyword in names(searches)) {
     results[[keyword]][[language]] = counts
   }
 }
+
 save(file="intermediate/results.RData", results)
