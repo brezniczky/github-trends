@@ -106,10 +106,10 @@ smooth.plot(results$`Kaggle`, "Kaggle")
 smooth.plot(results$Coursera, "Coursera")
 ```
 
-GitHub, the most popular free source source code repository service, is the vehicle for many assignments on Coursera, which then is the most popular MOOC, and as such, heavily affects even such a massive vehicle as GitHub.
-It already gets clear that these courses are close at the heart of R's popularity on GitHub, and are accountable for at least one significant growth period in the use of R.
+GitHub, the most popular free source source code repository service, is the vehicle for many assignments on Coursera, which then is the most popular MOOC, and as such, heavily affects even a massive vehicle like GitHub.
+From the above chart it already gets clear that these courses are at the heart of R's popularity on GitHub, and are accountable for at least one significant growth period (starting around mid-2013 +- 6 months) in the use of R. This probably was the [Data Science Specialization](https://www.coursera.org/specializations/jhu-data-science).
 
-However, this impact is not necessarily a bad thing from the perspective of the analysis - future analysts are trained in the present, and so does their current preference drive future curves.
+However, this impact is not necessarily a bad thing from the perspective of the analysis - future analysts are trained in the present, and so does their current preference drive future use.
 
 ## Future Work
 
