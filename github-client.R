@@ -1,9 +1,17 @@
-scrape = function() {
+# Note that the httpuv library also needed to 
+# be installed for a successful run.
+library(httr)
 
-  # Note that the httpuv library also needed to 
-  # be installed for a successful run.
-  library(httr)
-  
+#' Download keyword-specific statistics from GitHub
+#'
+#' An intermediate storage of cache files is created to reduce data loss
+#' when it is re-run after a crash.
+#'
+#' @param searches Vector or list of the keywords to get stats for
+#' @param row.cache.filename.fmt Path/pattern to use for cache files
+#' @param output.file Path to the target .RData file receving the statistics
+scrape = function(searches, row.cache.filename.fmt, output.file) {
+
   # setwd("/media/janca/Code/Prog/Github Analysis/analytics-and-hadoop-trends/github-trends/")
   
   # from the GitHub oauth 2.0 demo of httr
@@ -13,20 +21,7 @@ scrape = function() {
                      secret = "8f1e9618afe09676ccd74fb20bed6394b49a85e6")
   github_token <- oauth2.0_token(oauth_endpoints("github"), myapp)
   gtoken <- config(token = github_token)
-  
-  searches =
-    list(
-      "Machine Learning" = c("Python", "Java", "R"),
-      Analysis = c("R", "Python", "Java"),
-      Spark = c("Python", "Java", "Scala"),
-      "Deep Learning" = c("C++", "Java", "MatLab", "Python"),
-      "Big Data" = c("Python", "Java", "R", "Scala"),
-      "Kaggle" = c("Python", "R", "Matlab", "Java"),
-      "AWS" = c("JavaScript", "Python", "Ruby", "Java", "PHP", "go"),
-      "Coursera" = c("HTML", "R", "CSS", "JavaScript", "Matlab", "Java", 
-                     "Python", "Scala", "Jupyter Notebook", "Ruby")
-    )
-  
+
   start.date = as.Date("2008-01-01")
   n.periods = 52 * 9
   http.error.status.base = 400
@@ -41,7 +36,7 @@ scrape = function() {
       
       print(sprintf("keyword: %s language: %s", keyword, language))
       
-      row.cache.filename = sprintf("intermediate/%s %s created weekly.csv",  keyword, language)
+      row.cache.filename = sprintf(row.cache.filename.fmt,  keyword, language)
       
       if (file.exists(row.cache.filename)) {
         df = read.csv(row.cache.filename)
@@ -57,7 +52,7 @@ scrape = function() {
           url = 
             sprintf(
               "https://api.github.com/search/repositories?q=%s+language:%s+created:%s..%s",
-              URLencode(keyword), URLencode(language), d1, d2)
+              URLencode(keyword, reserved=TRUE), URLencode(language, reserved=TRUE), d1, d2)
           print(url)
           repeat {
             Sys.sleep(1)
@@ -82,7 +77,7 @@ scrape = function() {
       results[[keyword]][[language]] = counts
     }
   }
-  
-  save(file="intermediate/results.RData", results)
-  
+
+  save(file=output.file, results)  
+
 }
