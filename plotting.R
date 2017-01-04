@@ -1,4 +1,15 @@
-all.cols = c("blue", "darkgreen", "green", "purple", "red", "brown", "orange", "black", "yellow")
+all.cols = c(
+  "blue",   
+  "darkgreen",
+  "green",
+  "purple",
+  "red",      
+  "brown",   
+  "orange",
+  "black",
+  "yellow",
+  "dodgerblue3"
+)
 
 # do not forget the k-filter's radius
 start.date = as.Date("2008-01-01") + 22 * 7
@@ -21,7 +32,8 @@ plot.perc.of.total = function(series.list, col) {
 
   barplot(agg.matrix, 
           col = col, border = 0, space = 0,
-          main = "Breakdown by Share (%)")
+          main = "Breakdown by Share (%)",
+          las = 2)
 }
 
 smooth.plot = function(raw.values, main) {
