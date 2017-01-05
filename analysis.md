@@ -8,6 +8,9 @@
     -   [Keyword \#4: "Deep Learning"](#keyword-4-deep-learning)
     -   [Keyword \#5: "Big Data"](#keyword-5-big-data)
     -   [Keyword \#6: "AWS"](#keyword-6-aws)
+    -   [Keyword \#7: "Data Science"](#keyword-7-data-science)
+    -   [Keyword \#8: "Science"](#keyword-8-science)
+    -   [Keyword \#9: "Data"](#keyword-9-data)
     -   [+1: "Kaggle"](#kaggle)
     -   [+2: "Coursera"](#coursera)
     -   [Future Work](#future-work)
@@ -125,15 +128,30 @@ Keyword \#6: "AWS"
 
 ![](analysis_files/figure-markdown_strict/unnamed-chunk-7-1.png)
 
+Keyword \#7: "Data Science"
+---------------------------
+
+![](analysis_files/figure-markdown_strict/unnamed-chunk-8-1.png)
+
+Keyword \#8: "Science"
+----------------------
+
+![](analysis_files/figure-markdown_strict/unnamed-chunk-9-1.png)
+
+Keyword \#9: "Data"
+-------------------
+
+![](analysis_files/figure-markdown_strict/unnamed-chunk-10-1.png)
+
 +1: "Kaggle"
 ------------
 
-![](analysis_files/figure-markdown_strict/unnamed-chunk-8-1.png)
+![](analysis_files/figure-markdown_strict/unnamed-chunk-11-1.png)
 
 +2: "Coursera"
 --------------
 
-![](analysis_files/figure-markdown_strict/unnamed-chunk-9-1.png)
+![](analysis_files/figure-markdown_strict/unnamed-chunk-12-1.png)
 
 GitHub, the most popular free source source code repository service, is
 the vehicle for many assignments on Coursera, which then is the most
@@ -159,7 +177,10 @@ so. However, the means of presentation is an important factor of an
 analysis, and its merits will be re-evaluated somehow. Another, strongly
 related and problematic aspect is that repositories are normally
 multi-lingual, thus "intersection sets" will need to be checked on and
-accounted for.
+accounted for. A similar and more worrying problem is that multi-word
+search phrases, like \["Big Data"\] are not actually treated as a single
+literal, but probably as \["Big" + "Data"\] (i.e. or'ed), thus giving
+distorted results.
 
 Conclusion
 ----------

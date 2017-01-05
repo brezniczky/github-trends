@@ -13,8 +13,7 @@ library(httr)
 scrape = function(searches,
                   row.cache.filename.fmt,
                   output.file) {
-  # setwd("/media/janca/Code/Prog/Github Analysis/analytics-and-hadoop-trends/github-trends/")
-  
+
   # from the GitHub oauth 2.0 demo of httr
   oauth_endpoints("github")
   myapp <- oauth_app("github",

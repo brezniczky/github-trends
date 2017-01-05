@@ -91,7 +91,25 @@ smooth.plot(results$`Big Data`, "Big Data")
 ## Keyword #6: "AWS"
 
 ```{r echo=FALSE, fig.width=10}
-smooth.plot(results$`AWS`, "AWS")
+smooth.plot(results$AWS, "AWS")
+```
+
+## Keyword #7: "Data Science"
+
+```{r echo=FALSE, fig.width=10}
+smooth.plot(results$`Data Science`, "Data Science")
+```
+
+## Keyword #8: "Science"
+
+```{r echo=FALSE, fig.width=10}
+smooth.plot(results$`Science`, "Science")
+```
+
+## Keyword #9: "Data"
+
+```{r echo=FALSE, fig.width=10}
+smooth.plot(results$`Data`, "Data")
 ```
 
 ## +1: "Kaggle"
@@ -116,7 +134,7 @@ However, this impact is not necessarily a bad thing from the perspective of the 
 JavaScript and HTML have notoriously been omitted from these statistics.
 These are considered the presentation or output in this analysis and thus not the 'active ingredient'. While JavaScript is included on the AWS charts, it is difficult to tell to what extent it was useful to do so.
 However, the means of presentation is an important factor of an analysis, and its merits will be re-evaluated somehow.
-Another, strongly related and problematic aspect is that repositories are normally multi-lingual, thus "intersection sets" will need to be checked on and accounted for.
+Another, strongly related and problematic aspect is that repositories are normally multi-lingual, thus "intersection sets" will need to be checked on and accounted for. A similar and more worrying problem is that multi-word search phrases, like ["Big Data"] are not actually treated as a single literal, but probably as ["Big" + "Data"] (i.e. or'ed), thus giving distorted results.
 
 ## Conclusion
 
