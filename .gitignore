@@ -3,5 +3,7 @@
 .httr-oauth
 backup/
 intermediate/*.csv
+intermediate/rerun/*.csv
 intermediate_server/*.csv
+snippets/
 analysis_server.html
