@@ -74,6 +74,30 @@ get.filtered.data = function(raw.values, max.radius) {
   return(list(values = values, widths = widths))
 }
 
+plot.smooth.edges = function(xs, values, weights, cols) {
+  max.weight = max(weights)
+  uncertain.filter = weights != max.weight
+  # include those point(s) from which a section will need to be drawn
+  # to an uncertain (visually: alpha blent) point
+  uncertain.filter = uncertain.filter | c(uncertain.filter[-1], TRUE)
+  
+  uncertain.left.idxs = (1:length(uncertain.filter))[uncertain.filter]
+
+  for(i in 1:length(values)) {
+    v = values[[names(values)[i]]]
+    for(j in 1:(length(uncertain.left.idxs) - 1)) {
+      x.idx.l = uncertain.left.idxs[j]
+      x.idx.r = uncertain.left.idxs[j + 1]
+      if (x.idx.l == (x.idx.r - 1)) {
+        weight = (weights[x.idx.l] + weights[x.idx.r]) / 2 / max.weight
+        crgb = col2rgb(cols[i]) / 255
+        col = rgb(crgb[1], crgb[2], crgb[3], weight)
+        lines(c(xs[x.idx.l], xs[x.idx.r]), c(v[x.idx.l], v[x.idx.r]), col = col)
+      }
+    }
+  }
+}
+
 smooth.plot = function(raw.values, main) {
   par(mfrow = c(2, 1))
   
@@ -144,28 +168,8 @@ smooth.plot = function(raw.values, main) {
           # args.legend=(x=ncol(counts) + 3),
           col=cols, lty=1, las=2, bty="n")
   
-  uncertain.filter = !certain.filter
-  # include those point(s) from which a section will need to be drawn
-  # to an uncertain (visually: alpha blent) point
-  uncertain.filter = uncertain.filter | c(uncertain.filter[-1], TRUE)
-  
-  uncertain.left.idxs = (1:length(certain.filter))[uncertain.filter]
+  plot.smooth.edges(xs = xs, values = values, weights = weights, cols = cols)
 
-  for(i in 1:length(values)) {
-    v = values[[names(values)[i]]]
-    for(j in 1:(length(uncertain.left.idxs) - 1)) {
-      x.idx.l = uncertain.left.idxs[j]
-      x.idx.r = uncertain.left.idxs[j + 1]
-      if (x.idx.l == (x.idx.r - 1)) {
-        weight = (weights[x.idx.l] + weights[x.idx.r]) / 2 / max.weight
-        crgb = col2rgb(cols[i]) / 255
-        col = rgb(crgb[1], crgb[2], crgb[3], weight)
-        lines(c(xs[x.idx.l], xs[x.idx.r]), c(v[x.idx.l], v[x.idx.r]), col = col)
-      }
-    }
-  }
-  #  lines(c(as.Date("2008-06-01"), as.Date("2010-06-01")), c(1000, 2000), col = "blue")
-  
   xs = c(as.Date(c("2008-06-15", "2009-06-15", "2010-06-15", "2011-06-15", "2012-06-15", 
                    "2013-06-15", "2014-06-15", "2015-06-15", "2016-06-15")))
   timelabels=format(xs, "%Y-%m")
