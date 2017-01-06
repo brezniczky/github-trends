@@ -9,8 +9,8 @@
     -   [Keyword \#5: "Big Data"](#keyword-5-big-data)
     -   [Keyword \#6: "AWS"](#keyword-6-aws)
     -   [Keyword \#7: "Data Science"](#keyword-7-data-science)
-    -   [Keyword \#8: "Science"](#keyword-8-science)
-    -   [Keyword \#9: "Data"](#keyword-9-data)
+        -   [Sub-keyword: "Science"](#sub-keyword-science)
+        -   [Sub-keyword: "Data"](#sub-keyword-data)
     -   [+1: "Kaggle"](#kaggle)
     -   [+2: "Coursera"](#coursera)
     -   [Future Work](#future-work)
@@ -133,15 +133,16 @@ Keyword \#7: "Data Science"
 
 ![](analysis_files/figure-markdown_strict/unnamed-chunk-8-1.png)
 
-Keyword \#8: "Science"
-----------------------
+### Sub-keyword: "Science"
 
 ![](analysis_files/figure-markdown_strict/unnamed-chunk-9-1.png)
 
-Keyword \#9: "Data"
--------------------
+### Sub-keyword: "Data"
 
 ![](analysis_files/figure-markdown_strict/unnamed-chunk-10-1.png)
+
+The sub-keyword searches may help with noticing that R is/was big in
+"Data Science" repositories.
 
 +1: "Kaggle"
 ------------
@@ -161,10 +162,15 @@ are at the heart of R's popularity on GitHub, and are accountable for at
 least one significant growth period (starting around mid-2013 +- 6
 months) in the use of R. This probably was the [Data Science
 Specialization](https://www.coursera.org/specializations/jhu-data-science).
+It is worth highlighting that this specialization consists of 9 courses,
+each of which may involve the creation of a repository.
 
 However, this impact is not necessarily a bad thing from the perspective
 of the analysis - future analysts are trained in the present, and so
-does their current preference drive future use.
+does their current preference drive future use. With the suspect
+decreasing popularity of this course however the fame did not seem to
+last, while Python seems to exhibit a steady, natural, exponential
+growth.
 
 Future Work
 -----------
