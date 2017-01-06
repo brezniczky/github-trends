@@ -12,7 +12,7 @@ all.cols = c(
 )
 
 # do not forget the k-filter's radius
-start.date = as.Date("2008-01-01") + 22 * 7
+start.date = as.Date("2008-01-01") + 26 * 7
 
 
 plot.perc.of.total = function(series.list, col) {
