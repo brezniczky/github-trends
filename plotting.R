@@ -1,3 +1,5 @@
+# setwd("/media/janca/Code/Prog/Github Analysis/analytics-and-hadoop-trends/github-trends/")
+
 all.cols = c(
   "blue",   
   "darkgreen",
@@ -11,14 +13,13 @@ all.cols = c(
   "dodgerblue3"
 )
 
-# do not forget the k-filter's radius
-start.date = as.Date("2008-01-01") + 26 * 7
-
+start.date = as.Date("2008-01-01")
 
 plot.perc.of.total = function(series.list, col) {
   agg.series = lapply(
-    series.list, FUN = function(row) {
-      time = rep(1:((length(row) + 11) / 12), each=12)
+    series.list,
+    FUN = function(row) {
+      time = rep(1:((length(row) + 11) / 12), each = 12)
       time = time[1:length(row)]
       return(aggregate(row, by = list(time = time),
                        FUN = mean)$x)
@@ -29,22 +30,54 @@ plot.perc.of.total = function(series.list, col) {
   period.totals = apply(agg.matrix, MARGIN = 2, FUN = sum)
   period.totals[period.totals == 0] = 1
   agg.matrix = agg.matrix / rep(period.totals, each = nrow(agg.matrix)) * 100
+  
+  barplot(
+    agg.matrix,
+    col = col,
+    border = 0,
+    space = 0,
+    main = "Breakdown by Share (%)",
+    las = 2
+  )
+}
 
-  barplot(agg.matrix, 
-          col = col, border = 0, space = 0,
-          main = "Breakdown by Share (%)",
-          las = 2)
+get.filtered.data = function(raw.values, max.radius) {
+  # return a list(value=, width=) structure
+  
+  filters = c()
+  
+  output.length = max(length(raw.values) - max.radius * 2, 0)
+  values = rep(NA, output.length)
+  widths  = rep(NA, output.length)
+  
+  l = length(raw.values)
+  a = 1
+  
+  # this is probably hugely inefficient :)
+  # not caring about it just feels so good.
+  # yes, the middle chunk could be still done with kernapply()
+  for (i in 1:length(raw.values)) {
+    r = min(i - 1, length(raw.values) - i, max.radius)
+    if (r > length(filters)) {
+      filters[[r]] = kernel("daniell", r)
+    }
+    
+    if (r > 0) {
+      values[[a]] = kernapply(raw.values[(i - r):(i + r)], filters[[r]])
+    } else {
+      values[[a]] = raw.values[i]
+    }
+    widths[[a]] = 2 * r + 1
+    a = a + 1
+  }
+  
+  return(list(values = values, widths = widths))
 }
 
 smooth.plot = function(raw.values, main) {
   par(mfrow = c(2, 1))
   
   layout(mat = matrix(nrow = 1, data = c(1, 2)), widths = c(3, 2))
-  
-  # 53 wide kernel filter is used, close enough to
-  # a yearly basis, which is relatively robust against
-  # seasonality based fluctuations
-  k1 = kernel("daniell", 26)
   
   # keep recurring items at well-defined locations to
   # enhance readability and colour coding based consistency
@@ -71,25 +104,70 @@ smooth.plot = function(raw.values, main) {
   raw.values = raw.values[n]
   
   values = list()
+  weights = list()
+  
+  # a max. 53 period wide moving average is used, 
+  # close to a yearly basis, which is relatively robust 
+  # against seasonality based fluctuations in the middle
+  # section
   for(name in names(raw.values)) {
-    values[[name]] = 52 * kernapply(raw.values[[name]], k1)
+    filtered = get.filtered.data(raw.values[[name]], 26)
+    values[[name]] = filtered$value * 365 / 7
+    weights[[name]] = filtered$width
   }
   
+  #  browser()  
+  weights = weights[[names(raw.values)[1]]]
+  max.weight = max(weights)
+
   ymax = max(unlist(sapply(values, max)))
   ymin = min(unlist(sapply(values, min)))
-  
+
+  certain.filter = weights == max.weight
+
+  # paint everything with less than max. weight in
+  # a second pass
   xs = start.date + 0:(length(values[[1]]) - 1) * 7
-  mx.values = do.call(cbind, values)
-  cols = all.cols[1:ncol(mx.values)]
-  matplot(xs,
-          mx.values, ylim=c(ymin, ymax), type="l",
+  certain.xs = xs[certain.filter]
+  mtx.values = do.call(cbind, values)[certain.filter, ]
+  cols = all.cols[1:ncol(mtx.values)]
+  
+  matplot(certain.xs,
+          mtx.values,
+          type="l",
+          xlim = c(min(xs), max(xs)),
+          ylim=c(ymin, ymax), 
           ylab="", xlab="", xaxt="n",
           main=sprintf("'%s' Repositories\nCreated on GitHub per Year (Est.)", main),
           # legend=rownames(values),
           # beside=TRUE,
           # args.legend=(x=ncol(counts) + 3),
           col=cols, lty=1, las=2, bty="n")
-  xs = c(as.Date(c("2008-06-15", "2009-06-15", "2010-06-15", "2011-06-15", "2012-06-15", "2013-06-15", "2014-06-15", "2015-06-15", "2016-06-15")))
+  
+  uncertain.filter = !certain.filter
+  # include those point(s) from which a section will need to be drawn
+  # to an uncertain (visually: alpha blent) point
+  uncertain.filter = uncertain.filter | c(uncertain.filter[-1], TRUE)
+  
+  uncertain.left.idxs = (1:length(certain.filter))[uncertain.filter]
+
+  for(i in 1:length(values)) {
+    v = values[[names(values)[i]]]
+    for(j in 1:(length(uncertain.left.idxs) - 1)) {
+      x.idx.l = uncertain.left.idxs[j]
+      x.idx.r = uncertain.left.idxs[j + 1]
+      if (x.idx.l == (x.idx.r - 1)) {
+        weight = (weights[x.idx.l] + weights[x.idx.r]) / 2 / max.weight
+        crgb = col2rgb(cols[i]) / 255
+        col = rgb(crgb[1], crgb[2], crgb[3], weight)
+        lines(c(xs[x.idx.l], xs[x.idx.r]), c(v[x.idx.l], v[x.idx.r]), col = col)
+      }
+    }
+  }
+  #  lines(c(as.Date("2008-06-01"), as.Date("2010-06-01")), c(1000, 2000), col = "blue")
+  
+  xs = c(as.Date(c("2008-06-15", "2009-06-15", "2010-06-15", "2011-06-15", "2012-06-15", 
+                   "2013-06-15", "2014-06-15", "2015-06-15", "2016-06-15")))
   timelabels=format(xs, "%Y-%m")
   axis(1, at=xs, labels=timelabels, las=2, xlim=c(min(xs), max(xs)))
   legend(xs[1], max(do.call(c, values)), legend=names(values), col=cols, bty="n",
