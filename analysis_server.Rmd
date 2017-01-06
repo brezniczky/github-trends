@@ -12,6 +12,8 @@ output:
 source("plotting.R")
 
 load("intermediate_server/results.RData")
+
+color.table = get.color.table(results)
 ```
 
 # Picking a Language for Server-Side Programming (Working Draft)

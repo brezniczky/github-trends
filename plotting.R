@@ -1,44 +1,43 @@
 # setwd("/media/janca/Code/Prog/Github Analysis/analytics-and-hadoop-trends/github-trends/")
 
-all.cols = c(
-  "blue",   
-  "darkgreen",
-  "green",
-  "purple",
-  "red",      
-  "brown",   
-  "orange",
-  "black",
-  "yellow",
-  "dodgerblue3"
-)
-
 start.date = as.Date("2008-01-01")
 
-plot.perc.of.total = function(series.list, col) {
-  agg.series = lapply(
-    series.list,
-    FUN = function(row) {
-      time = rep(1:((length(row) + 11) / 12), each = 12)
-      time = time[1:length(row)]
-      return(aggregate(row, by = list(time = time),
-                       FUN = mean)$x)
+get.color.table = function(results) {
+  
+  all.cols = c(
+    "blue",   
+    "darkgreen",
+    "green",
+    "purple",
+    "dodgerblue3",
+    "brown",   
+    "orange",
+    "black",
+    "yellow",
+    "red",      
+    "lightblue3",
+    "lightgoldenrod3",
+    "ivory3",
+    "ivory4",
+    "greenyellow",
+    "green3"
+  )
+  
+  all.names = list()
+  
+  # happily abusing a list as a set :)
+  for(result in results) {
+    for(name in names(result)) {
+      if (is.null(all.names[[name]])) {
+        all.names[[name]] = NA        
+      }
     }
-  )
+  }
   
-  agg.matrix = do.call(rbind, agg.series)
-  period.totals = apply(agg.matrix, MARGIN = 2, FUN = sum)
-  period.totals[period.totals == 0] = 1
-  agg.matrix = agg.matrix / rep(period.totals, each = nrow(agg.matrix)) * 100
-  
-  barplot(
-    agg.matrix,
-    col = col,
-    border = 0,
-    space = 0,
-    main = "Breakdown by Share (%)",
-    las = 2
-  )
+  # Returns a list, functioning as a name -> col assignment
+  l = as.list(all.cols)[1:length(all.names)]
+  names(l) <- names(all.names)
+  return(l)
 }
 
 get.filtered.data = function(raw.values, max.radius) {
@@ -98,35 +97,42 @@ plot.smooth.edges = function(xs, values, weights, cols) {
   }
 }
 
+plot.perc.of.total = function(series.list, col) {
+  agg.series = lapply(
+    series.list,
+    FUN = function(row) {
+      time = rep(1:((length(row) + 11) / 12), each = 12)
+      time = time[1:length(row)]
+      return(aggregate(row, by = list(time = time),
+                       FUN = mean)$x)
+    }
+  )
+  
+  agg.matrix = do.call(rbind, agg.series)
+  period.totals = apply(agg.matrix, MARGIN = 2, FUN = sum)
+  period.totals[period.totals == 0] = 1
+  agg.matrix = agg.matrix / rep(period.totals, each = nrow(agg.matrix)) * 100
+  
+  barplot(
+    agg.matrix,
+    col = col,
+    border = 0,
+    space = 0,
+    main = "Breakdown by Share (%)",
+    las = 2
+  )
+}
+
 smooth.plot = function(raw.values, main) {
   par(mfrow = c(2, 1))
   
   layout(mat = matrix(nrow = 1, data = c(1, 2)), widths = c(3, 2))
   
-  # keep recurring items at well-defined locations to
-  # enhance readability and colour coding based consistency
-  move.to = function(n, item, target.idx) {
-    idx = which(n == item)
-    if (length(idx) > 0) {
-      n[idx] = n[target.idx]
-      n[target.idx] = item
-    }
-    return(n)
-  }
+  # TODO: possibly sort the series in a definite order
+  
+  # ensure consistent coloring across charts
+  cols = as.character(color.table[names(raw.values)])
 
-  # TODO: this colour preference assignment needs to be thought through  
-  n = names(raw.values)
-  n = move.to(n, "Python", 1)
-  n = move.to(n, "R", 2)
-  n = move.to(n, "Java", 3)
-  n = move.to(n, "C#", 4)
-  n = move.to(n, "go", 5)
-  # sometimes there are fewer/not all of them are present
-  # remove wrongly inserted empty cells
-  n = n[!is.na(n)]
-  
-  raw.values = raw.values[n]
-  
   values = list()
   weights = list()
   
@@ -140,7 +146,6 @@ smooth.plot = function(raw.values, main) {
     weights[[name]] = filtered$width
   }
   
-  #  browser()  
   weights = weights[[names(raw.values)[1]]]
   max.weight = max(weights)
 
@@ -154,7 +159,6 @@ smooth.plot = function(raw.values, main) {
   xs = start.date + 0:(length(values[[1]]) - 1) * 7
   certain.xs = xs[certain.filter]
   mtx.values = do.call(cbind, values)[certain.filter, ]
-  cols = all.cols[1:ncol(mtx.values)]
   
   matplot(certain.xs,
           mtx.values,

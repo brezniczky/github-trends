@@ -12,6 +12,8 @@ output:
 source("plotting.R")
 
 load("intermediate/results.RData")
+
+color.table = get.color.table(results)
 ```
 
 # Picking a Language for Analytics and Machine Learning (Working Draft)
