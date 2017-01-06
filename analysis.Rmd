@@ -100,17 +100,19 @@ smooth.plot(results$AWS, "AWS")
 smooth.plot(results$`Data Science`, "Data Science")
 ```
 
-## Keyword #8: "Science"
+### Sub-keyword: "Science"
 
 ```{r echo=FALSE, fig.width=10}
 smooth.plot(results$`Science`, "Science")
 ```
 
-## Keyword #9: "Data"
+### Sub-keyword: "Data"
 
 ```{r echo=FALSE, fig.width=10}
 smooth.plot(results$`Data`, "Data")
 ```
+
+The sub-keyword searches may help with noticing that R is/was big in "Data Science" repositories.
 
 ## +1: "Kaggle"
 
@@ -125,9 +127,9 @@ smooth.plot(results$Coursera, "Coursera")
 ```
 
 GitHub, the most popular free source source code repository service, is the vehicle for many assignments on Coursera, which then is the most popular MOOC, and as such, heavily affects even a massive vehicle like GitHub.
-From the above chart it already gets clear that these courses are at the heart of R's popularity on GitHub, and are accountable for at least one significant growth period (starting around mid-2013 +- 6 months) in the use of R. This probably was the [Data Science Specialization](https://www.coursera.org/specializations/jhu-data-science).
+From the above chart it already gets clear that these courses are at the heart of R's popularity on GitHub, and are accountable for at least one significant growth period (starting around mid-2013 +- 6 months) in the use of R. This probably was the [Data Science Specialization](https://www.coursera.org/specializations/jhu-data-science). It is worth highlighting that this specialization consists of 9 courses, each of which may involve the creation of a repository.
 
-However, this impact is not necessarily a bad thing from the perspective of the analysis - future analysts are trained in the present, and so does their current preference drive future use.
+However, this impact is not necessarily a bad thing from the perspective of the analysis - future analysts are trained in the present, and so does their current preference drive future use. With the suspect decreasing popularity of this course however the fame did not seem to last, while Python seems to exhibit a steady, natural, exponential growth.
 
 ## Future Work
 
