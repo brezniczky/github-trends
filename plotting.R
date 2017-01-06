@@ -170,8 +170,8 @@ smooth.plot = function(raw.values, main) {
   
   plot.smooth.edges(xs = xs, values = values, weights = weights, cols = cols)
 
-  xs = c(as.Date(c("2008-06-15", "2009-06-15", "2010-06-15", "2011-06-15", "2012-06-15", 
-                   "2013-06-15", "2014-06-15", "2015-06-15", "2016-06-15")))
+  xs = c(as.Date(c("2008-01-01", "2009-01-01", "2010-01-01", "2011-01-01", "2012-01-01", 
+                   "2013-01-01", "2014-01-01", "2015-01-01", "2016-01-01", "2017-01-01")))
   timelabels=format(xs, "%Y-%m")
   axis(1, at=xs, labels=timelabels, las=2, xlim=c(min(xs), max(xs)))
   legend(xs[1], max(do.call(c, values)), legend=names(values), col=cols, bty="n",
