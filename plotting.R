@@ -167,9 +167,6 @@ smooth.plot = function(raw.values, main) {
           ylim=c(ymin, ymax), 
           ylab="", xlab="", xaxt="n",
           main=sprintf("'%s' Repositories\nCreated on GitHub per Year (Est.)", main),
-          # legend=rownames(values),
-          # beside=TRUE,
-          # args.legend=(x=ncol(counts) + 3),
           col=cols, lty=1, las=2, bty="n")
   
   plot.smooth.edges(xs = xs, values = values, weights = weights, cols = cols)
@@ -178,7 +175,7 @@ smooth.plot = function(raw.values, main) {
                    "2013-01-01", "2014-01-01", "2015-01-01", "2016-01-01", "2017-01-01")))
   timelabels=format(xs, "%Y-%m")
   axis(1, at=xs, labels=timelabels, las=2, xlim=c(min(xs), max(xs)))
-  legend(xs[1], max(do.call(c, values)), legend=names(values), col=cols, bty="n",
+  legend(xs[1], max(do.call(c, values)), legend=rev(names(values)), col=rev(cols), bty="n",
          lwd=2, lty=1)
   
   # plot.perc.of.total(mx.values, cols, xs, timelabels)

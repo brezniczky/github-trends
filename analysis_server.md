@@ -1,6 +1,7 @@
 -   [Picking a Language for Server-Side Programming
     (Working Draft)](#picking-a-language-for-server-side-programming-working-draft)
     -   [Introduction](#introduction)
+    -   [Methodology](#methodology)
     -   [Keyword \#1: "Server"](#keyword-1-server)
     -   [Keyword \#2: "Web Server"](#keyword-2-web-server)
     -   [Keyword \#3: "Service"](#keyword-3-service)
@@ -21,18 +22,27 @@ Introduction
 I don't have much to do with server-side programming these days, so I'll
 let the charts speak for themselves, mostly.
 
-The method was to search for keywords using a GitHub client script over
-weekly intervals, starting from 2008-01-01, and then using a 53 week
-moving average to plot some comprehensibly smooth charts and somewhat
-compensate for likely seasonality effects.
-
 The [Wikipedia Diffusion of
 innovations](https://en.wikipedia.org/wiki/Diffusion_of_innovations)
 article may give some ideas what curve types we see on the charts,
-however it is hard to decide the impregnation of what area(s) are
+however it is difficult to decide the impregnation of which area(s) are
 described by each curve from merely these graphs, and to find out which
 of these, if any, have already started to reach into the flattening out
 (late majority) phase.
+
+Methodology
+-----------
+
+The analysis is based on the [GitHub](http://github.com) public
+repository statistics.
+
+To gather the data, a GitHub API client script was used to obtain weekly
+statistics, then a moving average was applied to get values smoothed
+over 53-week windows to get visually comprehensible charts and
+compensate for seasonality effects. Where the data does not allow for
+the entire filtering window width, the uncertainity (variance)
+increases, this is represented by fainter (more transparent) colors, as
+seen on the edges.
 
 Keyword \#1: "Server"
 ---------------------

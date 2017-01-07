@@ -2,6 +2,7 @@
     (Working Draft)](#picking-a-language-for-analytics-and-machine-learning-working-draft)
     -   [Executive Conjecture](#executive-conjecture)
     -   [Introduction](#introduction)
+    -   [Methodology](#methodology)
     -   [Keyword \#1: "Analysis"](#keyword-1-analysis)
     -   [Keyword \#2: "Spark"](#keyword-2-spark)
     -   [Keyword \#3: "Machine Learning"](#keyword-3-machine-learning)
@@ -44,12 +45,19 @@ debate.
 The present version is in an exploratory/draft status, and attempts to
 achieve even less - to be a starting point for the above.
 
+Methodology
+-----------
+
+The analysis is based on the [GitHub](http://github.com) public
+repository statistics.
+
 To gather the data, a GitHub API client script was used to obtain weekly
 statistics, then a moving average was applied to get values smoothed
 over 53-week windows to get visually comprehensible charts and
-compensate for seasonality effects. The R vs. 'Analysis' numbers clearly
-feature an outlier, it is yet to be looked into what event this
-corresponds with.
+compensate for seasonality effects. Where the data does not allow for
+the entire filtering window width, the uncertainity (variance)
+increases, this is represented by fainter (more transparent) colors, as
+seen on the edges.
 
 Keyword \#1: "Analysis"
 -----------------------
