@@ -7,7 +7,7 @@ You can check out the main report rendered as a markdown document over here:
 
 This is a guide in a few charts and comments towards picking your first analytics language.
 The conclusion is Python, however it is not a definitive answer and the reasoning isn't 100% either, yet appears correct.
-This is not a guide to the "best language for analyitics", although is close enough.
+This is not a guide to the "best language for analytics", although is close enough.
 
 The foster child in its infancy is here:
 [Picking a Language for Server-Side Programming ](https://github.com/brezniczky/github-trends/blob/master/analysis_server.md)
