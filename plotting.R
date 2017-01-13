@@ -123,7 +123,17 @@ plot.perc.of.total = function(series.list, col) {
   )
 }
 
-smooth.plot = function(raw.values, main) {
+smooth.plot = function(raw.values, main, format.type = "GitHub") {
+  # format.type: one of "GitHub" and "SO" (for StackOverflow)
+
+  format.types = 
+    list(GitHub = "'%s' Repositories\nCreated on GitHub per Year (Est.)",
+         SO = "'%s' Questions\non StackOverflow per Year (Est.)")
+  if (sum(format.type == names(format.types)) == 0)
+    stop("Unknown chart format type")
+  
+  main.format = format.types[[format.type]]
+
   par(mfrow = c(2, 1))
   
   layout(mat = matrix(nrow = 1, data = c(1, 2)), widths = c(3, 2))
@@ -166,7 +176,7 @@ smooth.plot = function(raw.values, main) {
           xlim = c(min(xs), max(xs)),
           ylim=c(ymin, ymax), 
           ylab="", xlab="", xaxt="n",
-          main=sprintf("'%s' Repositories\nCreated on GitHub per Year (Est.)", main),
+          main=sprintf(main.format, main),
           col=cols, lty=1, las=2, bty="n")
   
   plot.smooth.edges(xs = xs, values = values, weights = weights, cols = cols)
@@ -180,4 +190,9 @@ smooth.plot = function(raw.values, main) {
   
   # plot.perc.of.total(mx.values, cols, xs, timelabels)
   plot.perc.of.total(series.list = raw.values, cols)
+}
+
+double.plot = function(github.raw.values, SO.raw.values, main) {
+  smooth.plot(github.raw.values, main, "GitHub")
+  smooth.plot(SO.raw.values, main, "SO")
 }

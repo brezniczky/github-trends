@@ -22,7 +22,7 @@ Picking a Language for Analytics and Machine Learning (Working Draft)
 
 *Janos Brezniczky*
 
-*January, 2016*
+*January, 2017*
 
 Executive Conjecture
 --------------------
@@ -32,7 +32,7 @@ Python.
 Introduction
 ------------
 
-Which language to choose for analytics? It can be hard to tell.
+Which language to choose for analytics? It can be difficult to tell.
 
 The competition of programming langauges is already a long story and
 continues to stretch on. Judging the topic is difficult, subjective and
@@ -65,7 +65,7 @@ Keyword \#1: "Analysis"
 The most interesting here is probably that the influence of R seems to
 plateau out.
 
-![](analysis_files/figure-markdown_strict/unnamed-chunk-2-1.png)
+![](analysis_files/figure-markdown_strict/unnamed-chunk-2-1.png)![](analysis_files/figure-markdown_strict/unnamed-chunk-2-2.png)
 
 For some, the likely surprise of the (currently fractional) year 2016
 may also be that Python (at least in this aspect) seems to be overtaking
@@ -88,7 +88,7 @@ is a good predictor of future preference.)
 Keyword \#2: "Spark"
 --------------------
 
-![](analysis_files/figure-markdown_strict/unnamed-chunk-3-1.png)
+![](analysis_files/figure-markdown_strict/unnamed-chunk-3-1.png)![](analysis_files/figure-markdown_strict/unnamed-chunk-3-2.png)
 
 Scala steadily seems to be the major player at Spark. SparkR is in a
 pre-explosion state, if anywhere - and R didn't make it to the top 10 in
@@ -112,7 +112,7 @@ laziness that's not been presented here. Next version.
 Keyword \#3: "Machine Learning"
 -------------------------------
 
-![](analysis_files/figure-markdown_strict/unnamed-chunk-4-1.png)
+![](analysis_files/figure-markdown_strict/unnamed-chunk-4-1.png)![](analysis_files/figure-markdown_strict/unnamed-chunk-4-2.png)
 
 I think this one needs no explanation. In my experience, GitHub repos
 are quite often related to online learning, and the conclusion to draw
@@ -124,22 +124,22 @@ again.
 Keyword \#4: "Deep Learning"
 ----------------------------
 
-![](analysis_files/figure-markdown_strict/unnamed-chunk-5-1.png)
+![](analysis_files/figure-markdown_strict/unnamed-chunk-5-1.png)![](analysis_files/figure-markdown_strict/unnamed-chunk-5-2.png)
 
 Keyword \#5: "Big Data"
 -----------------------
 
-![](analysis_files/figure-markdown_strict/unnamed-chunk-6-1.png)
+![](analysis_files/figure-markdown_strict/unnamed-chunk-6-1.png)![](analysis_files/figure-markdown_strict/unnamed-chunk-6-2.png)
 
 Keyword \#6: "AWS"
 ------------------
 
-![](analysis_files/figure-markdown_strict/unnamed-chunk-7-1.png)
+![](analysis_files/figure-markdown_strict/unnamed-chunk-7-1.png)![](analysis_files/figure-markdown_strict/unnamed-chunk-7-2.png)
 
 Keyword \#7: "Data Science"
 ---------------------------
 
-![](analysis_files/figure-markdown_strict/unnamed-chunk-8-1.png)
+![](analysis_files/figure-markdown_strict/unnamed-chunk-8-1.png)![](analysis_files/figure-markdown_strict/unnamed-chunk-8-2.png)
 
 ### Sub-keyword: "Science"
 
@@ -155,7 +155,7 @@ The sub-keyword searches may help with noticing that R is/was big in
 +1: "Kaggle"
 ------------
 
-![](analysis_files/figure-markdown_strict/unnamed-chunk-11-1.png)
+![](analysis_files/figure-markdown_strict/unnamed-chunk-11-1.png)![](analysis_files/figure-markdown_strict/unnamed-chunk-11-2.png)
 
 +2: "Coursera"
 --------------
@@ -199,7 +199,7 @@ distorted results.
 Conclusion
 ----------
 
-Python.
+Python. More or less.
 
 At the minute, it seems, if you only choose one programming language for
 analytics (however over-idealistic that situation may be), or about to

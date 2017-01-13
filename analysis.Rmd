@@ -12,15 +12,19 @@ output:
 source("plotting.R")
 
 load("intermediate/results.RData")
+github.results = results
+load("intermediate/SO_results.RData")
+SO.results = results
+rm(results)
 
-color.table = get.color.table(results)
+color.table = get.color.table(c(github.results, SO.results))
 ```
 
 # Picking a Language for Analytics and Machine Learning (Working Draft)
 
 _Janos Brezniczky_
 
-_January, 2016_
+_January, 2017_
 
 ## Executive Conjecture
 
@@ -28,7 +32,7 @@ Python.
 
 ## Introduction
 
-Which language to choose for analytics? It can be hard to tell.
+Which language to choose for analytics? It can be difficult to tell.
 
 The competition of programming langauges is already a long story and continues to stretch on.
 Judging the topic is difficult, subjective and is prone to statistical methodological issues.
@@ -52,7 +56,9 @@ is represented by fainter (more transparent) colors, as seen on the edges.
 The most interesting here is probably that the influence of R seems to plateau out.
 
 ```{r echo=FALSE, fig.width=10}
-smooth.plot(results$Analysis, "Analysis")
+# double.plot(github.results$Analysis, "Analysis")
+# double.plot(SO.results$Analysis, "Analysis", format.type="SO")
+double.plot(github.results$Analysis, SO.results$Analysis, "Analysis")
 ```
 
 For some, the likely surprise of the (currently fractional) year 2016 may also be that Python (at least in this aspect) seems to be overtaking the lead in being the prime vehicle for analytics from R. Beyond that, both are strong candidates and Python is obviously involved in more analysis related libraries than R (part of the perceived growth is that it is probably catching up), which is just one of the reasons to scratch our heads whether to accept such finding as a fact. However, probably not many are that surprised, and this is just what it is. The R ecosystem needs to pull itself together quick if it wants to achieve more than to see the Python train passing. Python seems to be in the early adoption/early majority phase, which signifies a prospect for heavy future growth in this area. (See [Wikipedia](https://en.wikipedia.org/wiki/Diffusion_of_innovations).)
@@ -62,7 +68,7 @@ For some, the likely surprise of the (currently fractional) year 2016 may also b
 ## Keyword #2: "Spark"
 
 ```{r echo=FALSE, fig.width=10}
-smooth.plot(results$Spark, "Spark")
+double.plot(github.results$Spark, SO.results$Spark, "Spark")
 ```
 
 Scala steadily seems to be the major player at Spark.
@@ -78,7 +84,7 @@ Similarly GitHub for the past 6 months indicates a trendshift, too - however due
 ## Keyword #3: "Machine Learning"
 
 ```{r echo=FALSE, fig.width=10}
-smooth.plot(results$`Machine Learning`, "Machine Learning")
+double.plot(github.results$`Machine Learning`, SO.results$`Machine Learning`, "Machine Learning")
 ```
 
 I think this one needs no explanation. In my experience, GitHub repos are quite often related to online learning, and the conclusion to draw is that Python is the de facto standard of choice for teaching machine learning.
@@ -87,38 +93,38 @@ One remarkable aspect is perhaps that the growth is beautfully exponential - it 
 ## Keyword #4: "Deep Learning"
 
 ```{r echo=FALSE, fig.width=10}
-smooth.plot(results$`Deep Learning`, "Deep Learning")
+double.plot(github.results$`Deep Learning`, SO.results$`Deep Learning`, "Deep Learning")
 ```
 
 
 ## Keyword #5: "Big Data"
 
 ```{r echo=FALSE, fig.width=10}
-smooth.plot(results$`Big Data`, "Big Data")
+double.plot(github.results$`Big Data`, SO.results$`Big Data`, "Big Data")
 ```
 
 ## Keyword #6: "AWS"
 
 ```{r echo=FALSE, fig.width=10}
-smooth.plot(results$AWS, "AWS")
+double.plot(github.results$AWS, SO.results$AWS, "AWS")
 ```
 
 ## Keyword #7: "Data Science"
 
 ```{r echo=FALSE, fig.width=10}
-smooth.plot(results$`Data Science`, "Data Science")
+double.plot(github.results$`Data Science`, SO.results$`Data Science`, "Data Science")
 ```
 
 ### Sub-keyword: "Science"
 
 ```{r echo=FALSE, fig.width=10}
-smooth.plot(results$`Science`, "Science")
+smooth.plot(github.results$`Science`, "Science")
 ```
 
 ### Sub-keyword: "Data"
 
 ```{r echo=FALSE, fig.width=10}
-smooth.plot(results$`Data`, "Data")
+smooth.plot(github.results$`Data`, "Data")
 ```
 
 The sub-keyword searches may help with noticing that R is/was big in "Data Science" repositories.
@@ -126,13 +132,13 @@ The sub-keyword searches may help with noticing that R is/was big in "Data Scien
 ## +1: "Kaggle"
 
 ```{r echo=FALSE, fig.width=10}
-smooth.plot(results$`Kaggle`, "Kaggle")
+double.plot(github.results$`Kaggle`, SO.results$`Kaggle`, "Kaggle")
 ```
 
 ## +2: "Coursera"
 
 ```{r echo=FALSE, fig.width=10}
-smooth.plot(results$Coursera, "Coursera")
+smooth.plot(github.results$Coursera, "Coursera")
 ```
 
 GitHub, the most popular free source source code repository service, is the vehicle for many assignments on Coursera, which then is the most popular MOOC, and as such, heavily affects even a massive vehicle like GitHub.
@@ -149,7 +155,7 @@ Another, strongly related and problematic aspect is that repositories are normal
 
 ## Conclusion
 
-Python.
+Python. More or less.
 
 At the minute, it seems, if you only choose one programming language for analytics (however over-idealistic that situation may be), or about to choose your first one, it is Python for the win.
 It appears to be of significant presence (transferrable) or sheer dominance (hard to dismiss) in every single aspect examined above.
