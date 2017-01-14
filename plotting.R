@@ -136,7 +136,7 @@ smooth.plot = function(raw.values, main, format.type = "GitHub") {
 
   par(mfrow = c(2, 1))
   
-  layout(mat = matrix(nrow = 1, data = c(1, 2)), widths = c(3, 2))
+  layout(mat = matrix(nrow = 1, data = c(2, 1)), widths = c(2, 3))
   
   # TODO: possibly sort the series in a definite order
   
