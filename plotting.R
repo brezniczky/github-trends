@@ -1,5 +1,9 @@
 # setwd("/media/janca/Code/Prog/Github Analysis/analytics-and-hadoop-trends/github-trends/")
 
+library(ggplot2)
+library(grid)
+library(gridBase)
+
 start.date = as.Date("2008-01-01")
 
 get.color.table = function(results) {
@@ -97,30 +101,54 @@ plot.smooth.edges = function(xs, values, weights, cols) {
   }
 }
 
+plot.stacked = function(series.list, col) {
+  n.days = length(series.list[[1]])
+  n.series = length(series.list)
+  time = as.Date("2008-01-01") + (0:(n.days - 1)) * 7
+  time = rep(time, each = length(series.list))
+  
+  type = factor(names(series.list), levels = names(series.list), ordered = TRUE)
+  type = rep(type, n.days)
+  
+  series.mat = do.call(rbind, series.list)
+  value = as.vector(series.mat)
+  
+  col = rep(rev(col), n.days)
+  
+  p =
+    ggplot(data.frame(time, type, value), aes(time, value)) +
+    geom_area(aes(fill = type)) + scale_fill_manual(values = col) +
+    # white background
+    theme_bw() +
+    theme(axis.line = element_line(colour = "black"),
+          panel.grid.major = element_blank(),
+          panel.grid.minor = element_blank(),
+          panel.border = element_blank(),
+          panel.background = element_blank()) +
+    scale_x_date(date_labels = "%Y-%m") +
+    theme(axis.text.x = element_text(vjust = 0.5, size = 13,
+                                     lineheight = 0.8, angle = 90)) +
+    theme(axis.text.y = element_text(size=13, lineheight = 0.8)) +
+    theme(legend.position="none") +
+    ggtitle("Breakdown by Share (%)") +
+    theme(
+      plot.title = element_text(lineheight = .8, face = "bold", hjust = 0.5)) +
+    ylab("") + xlab("")
+
+  plot.new()
+  vps = baseViewports()
+  pushViewport(vps$figure)
+  vp1 = plotViewport(c(0, 1, 2, 1))
+  print(p, vp = vp1)
+}
+
 plot.perc.of.total = function(series.list, col) {
-  agg.series = lapply(
-    series.list,
-    FUN = function(row) {
-      time = rep(1:((length(row) + 11) / 12), each = 12)
-      time = time[1:length(row)]
-      return(aggregate(row, by = list(time = time),
-                       FUN = mean)$x)
-    }
-  )
-  
-  agg.matrix = do.call(rbind, agg.series)
-  period.totals = apply(agg.matrix, MARGIN = 2, FUN = sum)
-  period.totals[period.totals == 0] = 1
-  agg.matrix = agg.matrix / rep(period.totals, each = nrow(agg.matrix)) * 100
-  
-  barplot(
-    agg.matrix,
-    col = col,
-    border = 0,
-    space = 0,
-    main = "Breakdown by Share (%)",
-    las = 2
-  )
+  sums = apply(do.call(rbind, series.list), MARGIN = 2, FUN = sum)
+  sums[sums == 0] = 1
+  for(name in names(series.list))
+    series.list[[name]] = series.list[[name]] / sums * 100
+
+  plot.stacked(series.list, col)
 }
 
 smooth.plot = function(raw.values, main, format.type = "GitHub") {
@@ -172,12 +200,12 @@ smooth.plot = function(raw.values, main, format.type = "GitHub") {
   
   matplot(certain.xs,
           mtx.values,
-          type="l",
+          type = "l",
           xlim = c(min(xs), max(xs)),
-          ylim=c(ymin, ymax), 
-          ylab="", xlab="", xaxt="n",
-          main=sprintf(main.format, main),
-          col=cols, lty=1, las=2, bty="n")
+          ylim = c(ymin, ymax),
+          ylab = "", xlab = "", xaxt = "n",
+          main = sprintf(main.format, main),
+          col = cols, lty = 1, las = 2, bty = "n")
   
   plot.smooth.edges(xs = xs, values = values, weights = weights, cols = cols)
 
@@ -185,11 +213,10 @@ smooth.plot = function(raw.values, main, format.type = "GitHub") {
                    "2013-01-01", "2014-01-01", "2015-01-01", "2016-01-01", "2017-01-01")))
   timelabels=format(xs, "%Y-%m")
   axis(1, at=xs, labels=timelabels, las=2, xlim=c(min(xs), max(xs)))
-  legend(xs[1], max(do.call(c, values)), legend=rev(names(values)), col=rev(cols), bty="n",
-         lwd=2, lty=1)
+  legend(xs[1], max(do.call(c, values)), legend = rev(names(values)),
+         col = rev(cols), bty = "n", lwd = 2, lty = 1)
   
-  # plot.perc.of.total(mx.values, cols, xs, timelabels)
-  plot.perc.of.total(series.list = raw.values, cols)
+  plot.perc.of.total(series.list = rev(values), cols)
 }
 
 double.plot = function(github.raw.values, SO.raw.values, main) {

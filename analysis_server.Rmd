@@ -1,7 +1,7 @@
 ---
 title: "Picking a Language for Server-Side Programming (Working Draft)"
 author: "Janos Brezniczky"
-date: "January 2016"
+date: "January 2017"
 output:
   md_document:
     toc: true
@@ -20,7 +20,7 @@ color.table = get.color.table(results)
 
 _Janos Brezniczky_
 
-_January, 2016_
+_January, 2017_
 
 ## Introduction
 
@@ -65,7 +65,7 @@ smooth.plot(results$`Microservice`, "Microservice")
 ## Future Work
 
 A problematic aspect is that repositories are normally multi-lingual, thus "intersection sets" will need to be checked on and accounted for.
-An interesting thing can be the synchronous jump in PHP and JavaScript around 2016.
+An interesting thing can be the synchronous jump in PHP and JavaScript around early 2016.
 
 ## Conclusion
 

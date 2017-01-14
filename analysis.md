@@ -52,12 +52,12 @@ The analysis is based on the [GitHub](http://github.com) public
 repository statistics.
 
 Both a GitHub, and a StackExchange API client script was used to obtain
-weekly statistics, then a moving average was applied to get values
-smoothed over 53-week windows. This yields visually more comprehensible
-charts and aims to compensate for seasonality effects. Where the data
-does not allow for the entire filtering window width, the uncertainity
-(variance) increases, this is represented by fainter (more transparent)
-colors, as seen near the edges.
+weekly statistics. Afterwards, a moving average was applied to get
+values smoothed over 53-week windows. This yields visually more
+comprehensible charts and aims to compensate for seasonality effects.
+Where the data does not allow for the entire filtering window width, the
+uncertainity (variance) increases, this is represented by fainter (more
+transparent) colors, as seen near the edges.
 
 Keyword \#1: "Analysis"
 -----------------------

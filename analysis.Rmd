@@ -1,7 +1,7 @@
 ---
 title: "Picking a Language for Analytics and Machine Learning (Working Draft)"
 author: "Janos Brezniczky"
-date: "January 2016"
+date: "January 2017"
 output:
   md_document:
     toc: true
