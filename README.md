@@ -16,9 +16,15 @@ This one is barely a series of charts.
 
 ### Required packages
 
-The plotting requires gridBase and ggplot2.
+The plotting requires gridBase and [ggplot2](http://ggplot2.org/).
 
 The data collection depends on the httr and httuv libraries.
+
+From an absolute zero, just issue:
+
+```
+install.packages(c("ggplot2", "httr", "httuv", "gridBase"))
+```
 
 ### Legal
 
