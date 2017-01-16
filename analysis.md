@@ -191,15 +191,18 @@ so. However, the means of presentation is an important factor of an
 analysis, and its merits will be re-evaluated somehow. Another, strongly
 related and problematic aspect is that repositories are normally
 multi-lingual, thus "intersection sets" will need to be checked on and
-accounted for. A similar and more worrying problem is that multi-word
-search phrases, like \["Big Data"\] are not actually treated as a single
-literal, but probably as \["Big" + "Data"\] (i.e. or'ed), thus giving
-distorted results.
+accounted for.
+
+A very fundamental issue is just by these charts it is impossible to
+compare the actual popularity of "analysis" e.g. in Python vs. R, as the
+word "Analysis" just happens to appear in any text at times, and Python
+has a much larger user base, hence a higher volume of standard activity
+(not closely related to analytics).
 
 Conclusion
 ----------
 
-Python. More or less.
+Python. Seemingly.
 
 At the minute, it seems, if you only choose one programming language for
 analytics (however over-idealistic that situation may be), or about to

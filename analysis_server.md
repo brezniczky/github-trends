@@ -72,6 +72,12 @@ thus "intersection sets" will need to be checked on and accounted for.
 An interesting thing can be the synchronous jump in PHP and JavaScript
 around early 2016.
 
+A very fundamental issue is just by these charts it is impossible to
+compare the actual popularity of "servers" e.g. in Python vs. R, as the
+word "Analysis" just happens to appear in any text at times, and Python
+has a much larger user base, hence a higher volume of standard activity
+(not closely related to analytics).
+
 Conclusion
 ----------
 
