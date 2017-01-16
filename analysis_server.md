@@ -47,7 +47,7 @@ seen on the edges.
 Keyword \#1: "Server"
 ---------------------
 
-![](analysis_server_files/figure-markdown_strict/unnamed-chunk-2-1.png)
+![](analysis_server_files/figure-markdown_strict/unnamed-chunk-2-1.png)![](analysis_server_files/figure-markdown_strict/unnamed-chunk-2-2.png)
 
 Keyword \#2: "Web Server"
 -------------------------
@@ -62,7 +62,7 @@ Keyword \#3: "Service"
 Keyword \#4: "Microservice"
 ---------------------------
 
-![](analysis_server_files/figure-markdown_strict/unnamed-chunk-5-1.png)
+![](analysis_server_files/figure-markdown_strict/unnamed-chunk-5-1.png)![](analysis_server_files/figure-markdown_strict/unnamed-chunk-5-2.png)
 
 Future Work
 -----------

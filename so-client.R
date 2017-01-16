@@ -33,10 +33,7 @@ retry = function(expr, times) {
   }
 }
 
-# If this one returns has_more=TRUE in the attributes of the result,
-# the results are to be considered unreliable.
-get.SO.question.count = function(fromdate, todate, body, tagged, 
-                                 app.key, wait.it = TRUE, num.retries = 3) {
+get.SO.question.count = function(fromdate, todate, body, tagged, app.key, num.retries = 3, stop.on.paging = FALSE) {
   # url = 
   #   'http://api.stackexchange.com/2.2/search/advanced?' +
   #   'fromdate=1483228800&todate=1483660800&order=desc&' +
@@ -50,36 +47,33 @@ get.SO.question.count = function(fromdate, todate, body, tagged,
   tagged = URLencode(tagged, reserved = TRUE)
   body = URLencode(body, reserved = TRUE)
 
-  url = 
-    sprintf( 
-      'http://api.stackexchange.com/2.2/search/advanced?fromdate=%d&todate=%d&order=desc&sort=activity&body=%s&tagged=%s&site=stackoverflow&key=%s&pagesize=100',
-       fromdate.secs, todate.secs, body, tagged, app.key
-    )
-  
-  print(url)
+  has_more = FALSE
 
-  retry(
-    {
-      req = GET(url) 
+  page.index = 1
+  ans = 0
+  while ((page.index == 1) || has_more) {
+    url = 
+      sprintf( 
+        'http://api.stackexchange.com/2.2/search/advanced?fromdate=%d&todate=%d&order=desc&sort=activity&body=%s&tagged=%s&site=stackoverflow&key=%s&pagesize=100&page=%d',
+         fromdate.secs, todate.secs, body, tagged, app.key, page.index
+      )
+    
+    print(url)
 
-      if (req$status_code != 200) {
-        sleep(20)
-        stop(sprintf("http status of %d received", req$status_code))
-      }
-    }, 
-    times = num.retries)
+    retry(
+      {
+        req = GET(url) 
   
-  co.req = content(req)
+        if (req$status_code != 200) {
+          Sys.sleep(20)
+          stop(sprintf("http status of %d received", req$status_code))
+        }
+      }, 
+      times = num.retries)
+    
+    # for crash recovery
+    dbg.last.req <<- req
   
-  ans = length(co.req$items)
-  attr(ans, "has_more") = co.req$has_more
-  
-  print(ans)  
-  
-  # for crash recovery
-  dbg.last.req <<- req
-
-  if (wait.it) {
     backoff = req$backoff
     if (!is.null(backoff)) {
       print(sprintf("backoff requested: waiting %d seconds", backoff))
@@ -89,38 +83,68 @@ get.SO.question.count = function(fromdate, todate, body, tagged,
       # do not make more than 30 requests per second
       Sys.sleep(2)
     }
+
+    co.req = content(req)
+    has_more = co.req$has_more
+
+    ans = ans + length(co.req$items)
+    print(ans)
+    
+    if (stop.on.paging && has_more) {
+      attr(ans, "has_more") = TRUE
+      return(ans)
+    }
+    
+    page.index = page.index + 1
+    if (has_more) {
+      print(sprintf("stepping to page %d", page.index))
+    }
   }
 
+  attr(ans, "has_more") = FALSE
   return(ans)
 }
 
 get.SO.question.counts = function(fromdates, todates,
-                                  body, tagged, app.key, wait.it = TRUE, retries = 3) {
+                                  body, tagged, app.key, retries = 3) {
   
   if (length(todates) != length(fromdates))
     stop("fromdates and todates are not of equal length")
 
+  # avoid getting the overall count if it takes multiple steps -
+  # will be typically inefficient in the longer run as activity
+  # is likely to increase
   total.count = get.SO.question.count(fromdates[1], tail(todates, 1),
                                       body, tagged, app.key, 
-                                      wait.it, retries)
-  has_more = attr(total.count, "has_more")
-  
-  if (!has_more && (total.count > 0)) {
+                                      retries, stop.on.paging = TRUE)
+
+  if (total.count > 0) {
     ans = rep(NA, length(fromdates))
-    if (length(todates) > 1) {
-      for(i in 2:length(fromdates)) {
+    
+    if (attr(total.count, "has_more")) {
+      # the total was not obtained
+      start.i = 1
+    } else {
+      start.i = 2
+    }
+
+    if (length(todates) >= start.i) {
+      for(i in start.i:length(fromdates)) {
         count =  get.SO.question.count(fromdates[i], todates[i],
                                        body, tagged, app.key,
-                                       wait.it, retries)
+                                       retries)
         ans[i] = count
-        has_more = has_more || attr(count, "has_more")
       }
     }
-    ans[1] = total.count - sum(ans[-1])
+    
+    if (start.i == 2) {
+      ans[1] = total.count - sum(ans[-1])
+    }
+    
   } else {
     ans = rep(0, length(fromdates))
   }
-  attr(ans, "has_more") = has_more
+  attr(ans, "has_more") = attr(total.count, "has_more")
   return(ans)
 }
 
@@ -150,13 +174,14 @@ so.scrape = function(searches,
       } else {
         counts = c()
       }
-        
+      
+      # try to skip the first few years containing all zeroes (frequent case)
       nweeks = 52 * 7
       if (length(counts) < nweeks) {
         while(nweeks > length(counts)) {
           first.nweeks.scrape = 
             get.SO.question.count(start.date, as.Date(7 * nweeks - 1 + start.date), 
-                                  keyword, language, app.key)
+                                  keyword, language, app.key, stop.on.paging = TRUE)
           if (first.nweeks.scrape == 0) {
             print(sprintf("first %d weeks are 0", nweeks))
             # TODO: pad nicely, thoughtfully etc.
@@ -179,31 +204,21 @@ so.scrape = function(searches,
           i = length(counts)
           d1 = start.date + i * 7
           
-          if (try.more && 
-              ((i + 4) <= n.periods)) {
+          if (((i + 4) <= n.periods) && try.more) {
             d1 = d1 + 7 * (0:3)
             d2 = d1 + 7
             print(sprintf("scraping from %s to %s", head(d1), tail(d2)))
             new.counts =
               get.SO.question.counts(d1, d2, keyword, language, app.key)
+            counts = c(counts, new.counts)
             if (attr(new.counts, "has_more")) {
-              # do not try to scrape more of these together as 
-              # paging is yet to be implemented
-              #
-              # actually, retry without paging
               try.more = FALSE
-            } else {
-              counts = c(counts, new.counts)
             }
-          }
-          else {
+          } else {
             d2 = d1 + 6
             print(sprintf("scraping from %s to %s", d1, d2))
             count = get.SO.question.count(d1, d2, keyword, language, app.key)
             print(count)
-            if (attr(count, "has_more")) {
-              stop("need a greater resolution/paging is not implemented")
-            }
             counts[i + 1] = count
           }
 

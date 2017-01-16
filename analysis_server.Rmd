@@ -12,8 +12,12 @@ output:
 source("plotting.R")
 
 load("intermediate_server/results.RData")
+github.results = results
+load("intermediate_server/SO_results.RData")
+SO.results = results
+rm(results)
 
-color.table = get.color.table(results)
+color.table = get.color.table(c(github.results, SO.results))
 ```
 
 # Picking a Language for Server-Side Programming (Working Draft)
@@ -41,25 +45,25 @@ is represented by fainter (more transparent) colors, as seen on the edges.
 ## Keyword #1: "Server"
 
 ```{r echo=FALSE, fig.width=10}
-smooth.plot(results$Server, "Server")
+double.plot(github.results$Server, SO.results$Server, "Server")
 ```
 
 ## Keyword #2: "Web Server"
 
 ```{r echo=FALSE, fig.width=10}
-smooth.plot(results$`Web Server`, "Web Server")
+smooth.plot(github.results$`Web Server`, "Web Server")
 ```
 
 ## Keyword #3: "Service"
 
 ```{r echo=FALSE, fig.width=10}
-smooth.plot(results$Service, "Service")
+smooth.plot(github.results$Service, "Service")
 ```
 
 ## Keyword #4: "Microservice"
 
 ```{r echo=FALSE, fig.width=10}
-smooth.plot(results$`Microservice`, "Microservice")
+double.plot(github.results$Microservice, SO.results$Microservice, "Microservice")
 ```
 
 ## Future Work
