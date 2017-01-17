@@ -48,16 +48,19 @@ achieve even less - to be a starting point for the above.
 Methodology
 -----------
 
-The analysis is based on the [GitHub](http://github.com) public
-repository statistics.
+The document is based on the [GitHub](http://github.com) public
+repository and [StackOverflow](http://stackoverflow.com) question
+statistics.
 
-Both a GitHub, and a StackExchange API client script was used to obtain
-weekly statistics. Afterwards, a moving average was applied to get
-values smoothed over 53-week windows. This yields visually more
-comprehensible charts and aims to compensate for seasonality effects.
-Where the data does not allow for the entire filtering window width, the
-uncertainity (variance) increases, this is represented by fainter (more
-transparent) colors, as seen near the edges.
+The data is weekly statistics, obtained from both sites via their public
+API.
+
+A moving average filter is applied next, to get values smoothed over
+53-weekwindows to get visually comprehensible charts and compensate for
+seasonality effects. Where the data does not allow for the entire
+filtering window width, the uncertainity (variance) increases, this is
+represented by fainter (more transparent) colors, as seen near the
+edges.
 
 Keyword \#1: "Analysis"
 -----------------------
@@ -193,11 +196,11 @@ related and problematic aspect is that repositories are normally
 multi-lingual, thus "intersection sets" will need to be checked on and
 accounted for.
 
-A very fundamental issue is just by these charts it is impossible to
-compare the actual popularity of "analysis" e.g. in Python vs. R, as the
-word "Analysis" just happens to appear in any text at times, and Python
-has a much larger user base, hence a higher volume of standard activity
-(not closely related to analytics).
+A very fundamental issue is just by these charts it is not possible to
+accurately compare the actual popularity of "analysis" e.g. in Python
+vs. R, as the word "Analysis" just happens to appear in any text at
+times, and Python has a much larger user base, hence a higher volume of
+standard activity (not closely related to analytics).
 
 Conclusion
 ----------

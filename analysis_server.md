@@ -24,25 +24,28 @@ let the charts speak for themselves, mostly.
 
 The [Wikipedia Diffusion of
 innovations](https://en.wikipedia.org/wiki/Diffusion_of_innovations)
-article may give some ideas what curve types we see on the charts,
-however it is difficult to decide the impregnation of which area(s) are
-described by each curve from merely these graphs, and to find out which
-of these, if any, have already started to reach into the flattening out
-(late majority) phase.
+article may give some ideas what curve types (or the superposition of
+those) we can see on the charts, however it is difficult to decide the
+impregnation of which area(s) are described by each curve from merely
+these graphs, and to find out which of these, if any, have already
+started to reach into the flattening out (late majority) phase.
 
 Methodology
 -----------
 
-The analysis is based on the [GitHub](http://github.com) public
-repository statistics.
+The document is based on the [GitHub](http://github.com) public
+repository and [StackOverflow](http://stackoverflow.com) question
+statistics.
 
-To gather the data, a GitHub API client script was used to obtain weekly
-statistics, then a moving average was applied to get values smoothed
-over 53-week windows to get visually comprehensible charts and
-compensate for seasonality effects. Where the data does not allow for
-the entire filtering window width, the uncertainity (variance)
-increases, this is represented by fainter (more transparent) colors, as
-seen on the edges.
+The data is weekly statistics, obtained from both sites via their public
+API.
+
+A moving average filter is applied next, to get values smoothed over
+53-weekwindows to get visually comprehensible charts and compensate for
+seasonality effects. Where the data does not allow for the entire
+filtering window width, the uncertainity (variance) increases, this is
+represented by fainter (more transparent) colors, as seen near the
+edges.
 
 Keyword \#1: "Server"
 ---------------------
@@ -72,11 +75,11 @@ thus "intersection sets" will need to be checked on and accounted for.
 An interesting thing can be the synchronous jump in PHP and JavaScript
 around early 2016.
 
-A very fundamental issue is just by these charts it is impossible to
-compare the actual popularity of "servers" e.g. in Python vs. R, as the
-word "Analysis" just happens to appear in any text at times, and Python
-has a much larger user base, hence a higher volume of standard activity
-(not closely related to analytics).
+A very fundamental issue is just by these charts it is not possible to
+accurately compare the actual popularity of "servers" e.g. in Python vs.
+R, as the word "server" just happens to appear in any text at times, and
+Python has a much larger user base, hence a higher volume of standard
+activity (not closely related to analytics).
 
 Conclusion
 ----------
