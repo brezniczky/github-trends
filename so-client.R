@@ -62,10 +62,12 @@ get.SO.question.count = function(fromdate, todate, body, tagged, app.key, num.re
 
     retry(
       {
+        # do not make more than 30 requests per second
+        Sys.sleep(2.5)
         req = GET(url) 
   
         if (req$status_code != 200) {
-          Sys.sleep(20)
+          Sys.sleep(18)
           stop(sprintf("http status of %d received", req$status_code))
         }
       }, 
@@ -77,11 +79,7 @@ get.SO.question.count = function(fromdate, todate, body, tagged, app.key, num.re
     backoff = req$backoff
     if (!is.null(backoff)) {
       print(sprintf("backoff requested: waiting %d seconds", backoff))
-      Sys.sleep(backoff)
-    }
-    else {
-      # do not make more than 30 requests per second
-      Sys.sleep(2)
+      Sys.sleep(backoff - 2)
     }
 
     co.req = content(req)
