@@ -52,12 +52,12 @@ Keyword \#1: "Server"
 Keyword \#2: "Web Server"
 -------------------------
 
-![](analysis_server_files/figure-markdown_strict/unnamed-chunk-3-1.png)
+![](analysis_server_files/figure-markdown_strict/unnamed-chunk-3-1.png)![](analysis_server_files/figure-markdown_strict/unnamed-chunk-3-2.png)
 
 Keyword \#3: "Service"
 ----------------------
 
-![](analysis_server_files/figure-markdown_strict/unnamed-chunk-4-1.png)
+![](analysis_server_files/figure-markdown_strict/unnamed-chunk-4-1.png)![](analysis_server_files/figure-markdown_strict/unnamed-chunk-4-2.png)
 
 Keyword \#4: "Microservice"
 ---------------------------

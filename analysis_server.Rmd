@@ -51,13 +51,13 @@ double.plot(github.results$Server, SO.results$Server, "Server")
 ## Keyword #2: "Web Server"
 
 ```{r echo=FALSE, fig.width=10}
-smooth.plot(github.results$`Web Server`, "Web Server")
+double.plot(github.results$`Web Server`, SO.results$`Web Server`, "Web Server")
 ```
 
 ## Keyword #3: "Service"
 
 ```{r echo=FALSE, fig.width=10}
-smooth.plot(github.results$Service, "Service")
+double.plot(github.results$Service, SO.results$Service, "Service")
 ```
 
 ## Keyword #4: "Microservice"
