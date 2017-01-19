@@ -23,7 +23,7 @@ scrape = function(searches,
   gtoken <- config(token = github_token)
   
   start.date = as.Date("2008-01-01")
-  n.periods = 52 * 9
+  n.periods = 52 * 9 + 3
   http.error.status.base = 400
   http.error.status.too.many.reqs = 403
   
@@ -44,8 +44,8 @@ scrape = function(searches,
         counts = c()
       }
       
-      if (length(counts) <= n.periods) {
-        for (i in length(counts):n.periods) {
+      if (length(counts) < n.periods) {
+        for (i in length(counts):(n.periods - 1)) {
           d1 = start.date + i * 7
           d2 = d1 + 6
           url =
@@ -78,9 +78,7 @@ scrape = function(searches,
       }
       
       results[[keyword]][[language]] = counts
+      save(file = output.file, results)
     }
   }
-  
-  save(file = output.file, results)
-  
 }

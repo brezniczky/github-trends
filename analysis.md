@@ -12,6 +12,7 @@
     -   [Keyword \#7: "Data Science"](#keyword-7-data-science)
         -   [Sub-keyword: "Science"](#sub-keyword-science)
         -   [Sub-keyword: "Data"](#sub-keyword-data)
+    -   [Keyword \#8: "Mining"](#keyword-8-mining)
     -   [+1: "Kaggle"](#kaggle)
     -   [+2: "Coursera"](#coursera)
     -   [Future Work](#future-work)
@@ -68,7 +69,7 @@ Keyword \#1: "Analysis"
 The most interesting here is probably that the influence of R seems to
 plateau out.
 
-![](analysis_files/figure-markdown_strict/unnamed-chunk-2-1.png)![](analysis_files/figure-markdown_strict/unnamed-chunk-2-2.png)
+![](analysis_files/figure-markdown_strict/k1-1.png)![](analysis_files/figure-markdown_strict/k1-2.png)
 
 For some, the likely surprise of the (currently fractional) year 2016
 may also be that Python (at least in this aspect) seems to be overtaking
@@ -91,7 +92,7 @@ is a good predictor of future preference.)
 Keyword \#2: "Spark"
 --------------------
 
-![](analysis_files/figure-markdown_strict/unnamed-chunk-3-1.png)![](analysis_files/figure-markdown_strict/unnamed-chunk-3-2.png)
+![](analysis_files/figure-markdown_strict/unnamed-chunk-2-1.png)![](analysis_files/figure-markdown_strict/unnamed-chunk-2-2.png)
 
 Scala steadily seems to be the major player at Spark. SparkR is in a
 pre-explosion state, if anywhere - and R didn't make it to the top 10 in
@@ -115,7 +116,7 @@ laziness that's not been presented here. Next version.
 Keyword \#3: "Machine Learning"
 -------------------------------
 
-![](analysis_files/figure-markdown_strict/unnamed-chunk-4-1.png)![](analysis_files/figure-markdown_strict/unnamed-chunk-4-2.png)
+![](analysis_files/figure-markdown_strict/unnamed-chunk-3-1.png)![](analysis_files/figure-markdown_strict/unnamed-chunk-3-2.png)
 
 I think this one needs no explanation. In my experience, GitHub repos
 are quite often related to online learning, and the conclusion to draw
@@ -127,43 +128,48 @@ again.
 Keyword \#4: "Deep Learning"
 ----------------------------
 
-![](analysis_files/figure-markdown_strict/unnamed-chunk-5-1.png)![](analysis_files/figure-markdown_strict/unnamed-chunk-5-2.png)
+![](analysis_files/figure-markdown_strict/unnamed-chunk-4-1.png)![](analysis_files/figure-markdown_strict/unnamed-chunk-4-2.png)
 
 Keyword \#5: "Big Data"
 -----------------------
 
-![](analysis_files/figure-markdown_strict/unnamed-chunk-6-1.png)![](analysis_files/figure-markdown_strict/unnamed-chunk-6-2.png)
+![](analysis_files/figure-markdown_strict/k5-1.png)![](analysis_files/figure-markdown_strict/k5-2.png)
 
 Keyword \#6: "AWS"
 ------------------
 
-![](analysis_files/figure-markdown_strict/unnamed-chunk-7-1.png)![](analysis_files/figure-markdown_strict/unnamed-chunk-7-2.png)
+![](analysis_files/figure-markdown_strict/unnamed-chunk-5-1.png)![](analysis_files/figure-markdown_strict/unnamed-chunk-5-2.png)
 
 Keyword \#7: "Data Science"
 ---------------------------
 
-![](analysis_files/figure-markdown_strict/unnamed-chunk-8-1.png)![](analysis_files/figure-markdown_strict/unnamed-chunk-8-2.png)
+![](analysis_files/figure-markdown_strict/unnamed-chunk-6-1.png)![](analysis_files/figure-markdown_strict/unnamed-chunk-6-2.png)
 
 ### Sub-keyword: "Science"
 
-![](analysis_files/figure-markdown_strict/unnamed-chunk-9-1.png)
+![](analysis_files/figure-markdown_strict/unnamed-chunk-7-1.png)
 
 ### Sub-keyword: "Data"
 
-![](analysis_files/figure-markdown_strict/unnamed-chunk-10-1.png)
+![](analysis_files/figure-markdown_strict/unnamed-chunk-8-1.png)
 
 The sub-keyword searches may help with noticing that R is/was big in
 "Data Science" repositories.
 
+Keyword \#8: "Mining"
+---------------------
+
+![](analysis_files/figure-markdown_strict/k8-1.png)![](analysis_files/figure-markdown_strict/k8-2.png)
+
 +1: "Kaggle"
 ------------
 
-![](analysis_files/figure-markdown_strict/unnamed-chunk-11-1.png)![](analysis_files/figure-markdown_strict/unnamed-chunk-11-2.png)
+![](analysis_files/figure-markdown_strict/unnamed-chunk-9-1.png)![](analysis_files/figure-markdown_strict/unnamed-chunk-9-2.png)
 
 +2: "Coursera"
 --------------
 
-![](analysis_files/figure-markdown_strict/unnamed-chunk-12-1.png)
+![](analysis_files/figure-markdown_strict/unnamed-chunk-10-1.png)
 
 GitHub, the most popular free source source code repository service, is
 the vehicle for many assignments on Coursera, which then is the most

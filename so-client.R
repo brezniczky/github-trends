@@ -152,7 +152,7 @@ so.scrape = function(searches,
                      app.key) { 
 
   start.date = as.Date("2008-01-01")
-  n.periods = 52 * 9
+  n.periods = 52 * 9 + 3
   http.error.status.base = 400
   http.error.status.too.many.reqs = 403
 
@@ -228,9 +228,9 @@ so.scrape = function(searches,
       }
       
       results[[keyword]][[language]] = counts
+      # allow to have a peek on the intermediate results
+      save(file = output.file, results)
     }
-    # allow to have a peek on the intermediate results
-    save(file = output.file, results)
   }
 }
 

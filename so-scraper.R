@@ -17,7 +17,7 @@ searches =
        # pending "Java", "C++", "TeX", "go", 
     # "Data" = c("Python", "R", "Jupyter Notebook", "Java", "C++", "TeX", "go", "C#"), # added C#!
     # "Science" = c("Python", "R", "Jupyter Notebook", "Java", "C++", "TeX", "go", "C#"), # added C#!
-    "AWS" = c("JavaScript", "Python", "Ruby", "Java", "PHP", "go", "C#") # added C#!
+    "AWS" = c("JavaScript", "Python", "Ruby", "Java", "PHP", "go", "C#"), # added C#!
     # # "Coursera" = c(
     # #   "HTML",
     # #   "R",
@@ -30,6 +30,7 @@ searches =
     # #   "Jupyter Notebook",
     # #   "Ruby"
     # # )
+    "Mining" = c("Python", "Java", "R", "JavaScript", "Jupyter Notebook", "HTML", "C++", "C#")
   )
 
 

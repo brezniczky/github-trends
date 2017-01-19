@@ -28,7 +28,8 @@ searches =
       "Scala",
       "Jupyter Notebook",
       "Ruby"
-    )
+    ),
+    "Mining" = c("Python", "Java", "R", "JavaScript", "Jupyter Notebook", "HTML", "C++", "C#")
   )
 
 scrape(

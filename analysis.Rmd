@@ -60,7 +60,7 @@ as seen near the edges.
 
 The most interesting here is probably that the influence of R seems to plateau out.
 
-```{r echo=FALSE, fig.width=10}
+```{r "k1", echo=FALSE, fig.width=10}
 # double.plot(github.results$Analysis, "Analysis")
 # double.plot(SO.results$Analysis, "Analysis", format.type="SO")
 double.plot(github.results$Analysis, SO.results$Analysis, "Analysis")
@@ -104,7 +104,7 @@ double.plot(github.results$`Deep Learning`, SO.results$`Deep Learning`, "Deep Le
 
 ## Keyword #5: "Big Data"
 
-```{r echo=FALSE, fig.width=10}
+```{r "k5", echo=FALSE, fig.width=10}
 double.plot(github.results$`Big Data`, SO.results$`Big Data`, "Big Data")
 ```
 
@@ -133,6 +133,12 @@ smooth.plot(github.results$`Data`, "Data")
 ```
 
 The sub-keyword searches may help with noticing that R is/was big in "Data Science" repositories.
+
+## Keyword #8: "Mining"
+
+```{r "k8", echo=FALSE, fig.width=10}
+double.plot(github.results$Mining, SO.results$Mining, "Mining")
+```
 
 ## +1: "Kaggle"
 
