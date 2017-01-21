@@ -29,7 +29,9 @@ searches =
       "Jupyter Notebook",
       "Ruby"
     ),
-    "Mining" = c("Python", "Java", "R", "JavaScript", "Jupyter Notebook", "HTML", "C++", "C#")
+    "Mining" = c("Python", "Java", "R", "JavaScript", "Jupyter Notebook", "HTML", "C++", "C#"),
+    "Visualization" = c("JavaScript", "Python", "HTML", "Java", "C++", "R", "CSS", "Jupyter Notebook"),
+    "Chart" = c("JavaScript", "Java", "HTML", "Python", "ColdFusion", "PHP", "Ruby", "Objective-C", "CSS", "C#", "R")
   )
 
 scrape(

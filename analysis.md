@@ -13,6 +13,8 @@
         -   [Sub-keyword: "Science"](#sub-keyword-science)
         -   [Sub-keyword: "Data"](#sub-keyword-data)
     -   [Keyword \#8: "Mining"](#keyword-8-mining)
+    -   [Keyword \#9: "Visualization"](#keyword-9-visualization)
+    -   [Keyword \#10: "Chart"](#keyword-10-chart)
     -   [+1: "Kaggle"](#kaggle)
     -   [+2: "Coursera"](#coursera)
     -   [Future Work](#future-work)
@@ -160,6 +162,16 @@ Keyword \#8: "Mining"
 ---------------------
 
 ![](analysis_files/figure-markdown_strict/k8-1.png)![](analysis_files/figure-markdown_strict/k8-2.png)
+
+Keyword \#9: "Visualization"
+----------------------------
+
+![](analysis_files/figure-markdown_strict/Visualization-1.png)![](analysis_files/figure-markdown_strict/Visualization-2.png)
+
+Keyword \#10: "Chart"
+---------------------
+
+![](analysis_files/figure-markdown_strict/Chart-1.png)![](analysis_files/figure-markdown_strict/Chart-2.png)
 
 +1: "Kaggle"
 ------------

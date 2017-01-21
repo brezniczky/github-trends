@@ -140,6 +140,18 @@ The sub-keyword searches may help with noticing that R is/was big in "Data Scien
 double.plot(github.results$Mining, SO.results$Mining, "Mining")
 ```
 
+## Keyword #9: "Visualization"
+
+```{r "Visualization", echo=FALSE, fig.width=10}
+double.plot(github.results$Visualization, SO.results$Visualization, "Visualization")
+```
+
+## Keyword #10: "Chart"
+
+```{r "Chart", echo=FALSE, fig.width=10}
+double.plot(github.results$Chart, SO.results$Chart, "Chart")
+```
+
 ## +1: "Kaggle"
 
 ```{r echo=FALSE, fig.width=10}

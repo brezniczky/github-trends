@@ -75,9 +75,11 @@ scrape = function(searches,
           if (i %% 52 == 51)
             write.csv(data.frame(values = counts), file = row.cache.filename)
         }
+        write.csv(data.frame(values = counts), file = row.cache.filename)
       }
       
       results[[keyword]][[language]] = counts
+      # allow to have a peek on the intermediate results
       save(file = output.file, results)
     }
   }

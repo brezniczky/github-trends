@@ -24,7 +24,9 @@ get.color.table = function(results) {
     "ivory3",
     "ivory4",
     "greenyellow",
-    "green3"
+    "green3",
+    "slateblue4",
+    "violetred3"
   )
   
   all.names = list()
