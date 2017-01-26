@@ -200,17 +200,20 @@ smooth.plot = function(raw.values, main, format.type = "GitHub") {
   certain.xs = xs[certain.filter]
   mtx.values = do.call(cbind, values)[certain.filter, ]
   
+  par(mar=c(5, 0.5, 5, 5))
   matplot(certain.xs,
           mtx.values,
           type = "l",
           xlim = c(min(xs), max(xs)),
           ylim = c(ymin, ymax),
-          ylab = "", xlab = "", xaxt = "n",
+          ylab = "", xlab = "", xaxt = "n", yaxt = "n",
           main = sprintf(main.format, main),
           col = cols, lty = 1, las = 2, bty = "n")
   
   plot.smooth.edges(xs = xs, values = values, weights = weights, cols = cols)
 
+  axis(4, las=2, pos = max(xs) + 1) #labels=timelabels) #las=2, xlim=c(min(xs), max(xs)))
+  
   xs = c(as.Date(c("2008-01-01", "2009-01-01", "2010-01-01", "2011-01-01", "2012-01-01", 
                    "2013-01-01", "2014-01-01", "2015-01-01", "2016-01-01", "2017-01-01")))
   timelabels=format(xs, "%Y-%m")

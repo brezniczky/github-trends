@@ -61,8 +61,6 @@ as seen near the edges.
 The most interesting here is probably that the influence of R seems to plateau out.
 
 ```{r "k1", echo=FALSE, fig.width=10}
-# double.plot(github.results$Analysis, "Analysis")
-# double.plot(SO.results$Analysis, "Analysis", format.type="SO")
 double.plot(github.results$Analysis, SO.results$Analysis, "Analysis")
 ```
 
@@ -85,7 +83,6 @@ See http://www.itjobswatch.co.uk/jobs/london/apache%20spark.do for the current s
 
 Similarly GitHub for the past 6 months indicates a trendshift, too - however due to potential seasonality issues and overwhelming Christmas laziness that's not been presented here. Next version.
 
-
 ## Keyword #3: "Machine Learning"
 
 ```{r echo=FALSE, fig.width=10}
@@ -100,7 +97,6 @@ One remarkable aspect is perhaps that the growth is beautfully exponential - it 
 ```{r echo=FALSE, fig.width=10}
 double.plot(github.results$`Deep Learning`, SO.results$`Deep Learning`, "Deep Learning")
 ```
-
 
 ## Keyword #5: "Big Data"
 
