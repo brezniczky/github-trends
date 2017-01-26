@@ -18,6 +18,7 @@ SO.results = results
 rm(results)
 
 color.table = get.color.table(c(github.results, SO.results))
+series.order = get.series.order(c(github.results, SO.results))
 ```
 
 # Picking a Language for Analytics and Machine Learning (Working Draft)

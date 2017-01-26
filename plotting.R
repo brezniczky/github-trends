@@ -6,19 +6,34 @@ library(gridBase)
 
 start.date = as.Date("2008-01-01")
 
+get.all.names = function(results) {
+  all.names = list()
+  
+  # happily abusing a list as a set :)
+  for(result in results) {
+    for(name in names(result)) {
+      if (is.null(all.names[[name]])) {
+        all.names[[name]] = NA
+      }
+    }
+  }
+  
+  return(names(all.names))
+}
+
 get.color.table = function(results) {
   
   all.cols = c(
-    "blue",   
+    "blue",
     "darkgreen",
     "green",
     "purple",
     "dodgerblue3",
-    "brown",   
+    "brown",
     "orange",
     "black",
     "yellow",
-    "red",      
+    "red",
     "lightblue3",
     "lightgoldenrod3",
     "ivory3",
@@ -29,22 +44,39 @@ get.color.table = function(results) {
     "violetred3"
   )
   
-  all.names = list()
-  
-  # happily abusing a list as a set :)
-  for(result in results) {
-    for(name in names(result)) {
-      if (is.null(all.names[[name]])) {
-        all.names[[name]] = NA        
-      }
-    }
-  }
-  
   # Returns a list, functioning as a name -> col assignment
+  all.names = get.all.names(results)
   l = as.list(all.cols)[1:length(all.names)]
-  names(l) <- names(all.names)
+  names(l) <- all.names
   return(l)
 }
+
+get.series.order = function(results) {
+  # create an alphabetic ordering
+  # apart from R: first and Python: last
+  
+  all.names = get.all.names(results)
+  all.names = all.names[!all.names %in% c("R", "Python")]
+  return(c("R", all.names, "Python"))
+}
+
+sort.to = function(new.index, list.of.values) {
+  ans = list.of.values[new.index]
+  # TODO: I'm surely ignoring something here
+  ans = ans[!is.na(names(ans))]
+  return(ans)
+}
+
+test.sort.to = function() {
+  ni = 1:5
+  act.values = list(`1` = 3, `2` = 4, `4` = 16)
+  sorted = sort.to(new.index = ni, list.of.values = act.values)
+  if (!identical(as.numeric(sorted), c(3, 4, 16))) {
+    stop("sort failed")
+  }
+}
+
+test.sort.to()
 
 get.filtered.data = function(raw.values, max.radius) {
   # return a list(value=, width=) structure
@@ -155,6 +187,9 @@ plot.perc.of.total = function(series.list, col) {
 
 smooth.plot = function(raw.values, main, format.type = "GitHub") {
   # format.type: one of "GitHub" and "SO" (for StackOverflow)
+  #
+  # assumes: the color.table and series.order variables are set 
+  #          in the parent environment
 
   format.types = 
     list(GitHub = "'%s' Repositories\nCreated on GitHub per Year (Est.)",
@@ -164,6 +199,9 @@ smooth.plot = function(raw.values, main, format.type = "GitHub") {
   
   main.format = format.types[[format.type]]
 
+  raw.values = sort.to(new.index = series.order, 
+                       list.of.values = raw.values)
+  
   par(mfrow = c(2, 1))
   
   layout(mat = matrix(nrow = 1, data = c(2, 1)), widths = c(2, 3))
