@@ -23,7 +23,7 @@ scrape = function(searches,
   gtoken <- config(token = github_token)
   
   start.date = as.Date("2008-01-01")
-  n.periods = 52 * 9 + 3
+  n.periods = 52 * 9 + 6 # to 2017-01-30
   http.error.status.base = 400
   http.error.status.too.many.reqs = 403
   
@@ -75,8 +75,9 @@ scrape = function(searches,
           if (i %% 52 == 51)
             write.csv(data.frame(values = counts), file = row.cache.filename)
         }
-        write.csv(data.frame(values = counts), file = row.cache.filename)
       }
+      counts = counts[1:n.periods]
+      write.csv(data.frame(values = counts), file = row.cache.filename)
       
       results[[keyword]][[language]] = counts
       # allow to have a peek on the intermediate results
