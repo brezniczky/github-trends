@@ -149,6 +149,9 @@ plot.stacked = function(series.list, col) {
   
   col = rep(rev(col), n.days)
   
+  xs = c(as.Date(c("2008-01-01", "2009-01-01", "2010-01-01", "2011-01-01", "2012-01-01", 
+                   "2013-01-01", "2014-01-01", "2015-01-01", "2016-01-01", "2017-01-01")))
+  
   p =
     ggplot(data.frame(time, type, value), aes(time, value)) +
     geom_area(aes(fill = type)) + scale_fill_manual(values = col) +
@@ -159,7 +162,7 @@ plot.stacked = function(series.list, col) {
           panel.grid.minor = element_blank(),
           panel.border = element_blank(),
           panel.background = element_blank()) +
-    scale_x_date(date_labels = "%Y-%m") +
+    scale_x_date(date_labels = "%Y-%m", breaks = xs) +
     theme(axis.text.x = element_text(vjust = 0.5, size = 13,
                                      lineheight = 0.8, angle = 90)) +
     theme(axis.text.y = element_text(size=13, lineheight = 0.8)) +
