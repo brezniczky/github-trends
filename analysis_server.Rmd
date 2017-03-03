@@ -49,7 +49,7 @@ statistics.
 The data is weekly statistics, obtained from both sites via their public API.
 
 A moving average filter is applied next, to get values smoothed 
-over 53-weekwindows to get visually comprehensible charts and 
+over 53-week windows to get visually comprehensible charts and 
 compensate for seasonality effects. Where the data does not 
 allow for the entire filtering window width, the uncertainity (variance)
 increases, this is represented by fainter (more transparent) colors, 
@@ -77,6 +77,11 @@ double.plot(github.results$Service, SO.results$Service, "Service")
 
 ```{r echo=FALSE, fig.width=10}
 double.plot(github.results$Microservice, SO.results$Microservice, "Microservice")
+```
+
+## Keyword #5: "Cloud"
+```{r echo=FALSE, fig.width=10}
+double.plot(github.results$Cloud, SO.results$Cloud, "Cloud")
 ```
 
 ## Future Work

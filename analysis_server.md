@@ -6,6 +6,7 @@
     -   [Keyword \#2: "Web Server"](#keyword-2-web-server)
     -   [Keyword \#3: "Service"](#keyword-3-service)
     -   [Keyword \#4: "Microservice"](#keyword-4-microservice)
+    -   [Keyword \#5: "Cloud"](#keyword-5-cloud)
     -   [Future Work](#future-work)
     -   [Conclusion](#conclusion)
 
@@ -41,7 +42,7 @@ The data is weekly statistics, obtained from both sites via their public
 API.
 
 A moving average filter is applied next, to get values smoothed over
-53-weekwindows to get visually comprehensible charts and compensate for
+53-week windows to get visually comprehensible charts and compensate for
 seasonality effects. Where the data does not allow for the entire
 filtering window width, the uncertainity (variance) increases, this is
 represented by fainter (more transparent) colors, as seen near the
@@ -66,6 +67,11 @@ Keyword \#4: "Microservice"
 ---------------------------
 
 ![](analysis_server_files/figure-markdown_strict/unnamed-chunk-5-1.png)![](analysis_server_files/figure-markdown_strict/unnamed-chunk-5-2.png)
+
+Keyword \#5: "Cloud"
+--------------------
+
+![](analysis_server_files/figure-markdown_strict/unnamed-chunk-6-1.png)![](analysis_server_files/figure-markdown_strict/unnamed-chunk-6-2.png)
 
 Future Work
 -----------

@@ -1,9 +1,9 @@
 # setwd("/media/janca/Code/Prog/Github Analysis/analytics-and-hadoop-trends/github-trends/")
-source("github-client.R")
+source("so-client.R")
 
-row.cache.filename.fmt = "intermediate_server/%s %s created weekly.csv"
+row.cache.filename.fmt = "intermediate_server/SO %s %s created weekly.csv"
 
-output.file = "intermediate_server/results.RData"
+output.file = "intermediate_server/SO_results.RData"
 
 all.languages = c("Python",
                   "go",
@@ -24,8 +24,9 @@ searches =
     "Cloud"      = all.languages
   )
 
-scrape(
-  searches = searches,
-  row.cache.filename.fmt = row.cache.filename.fmt,
-  output.file = output.file
-)
+
+so.scrape(searches = searches,
+          row.cache.filename.fmt = row.cache.filename.fmt,
+          output.file = output.file,
+          app.key = "e7vMoB4rv7qyegz6yaH3QA((")
+
