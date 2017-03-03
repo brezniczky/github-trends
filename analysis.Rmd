@@ -25,7 +25,7 @@ series.order = get.series.order(c(github.results, SO.results))
 
 _Janos Brezniczky_
 
-_January, 2017_
+_March, 2017_
 
 ## Executive Conjecture
 

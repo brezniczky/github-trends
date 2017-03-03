@@ -152,7 +152,7 @@ so.scrape = function(searches,
                      app.key) { 
 
   start.date = as.Date("2008-01-01")
-    n.periods = 52 * 9 + 6 # up to 2017-01-30
+  n.periods = 52 * 9 + 10 # up to 2017-02-27
   http.error.status.base = 400
   http.error.status.too.many.reqs = 403
 
