@@ -41,7 +41,9 @@ get.color.table = function(results) {
     "greenyellow",
     "green3",
     "slateblue4",
-    "violetred3"
+    "violetred3",
+    "cyan",
+    "peachpuff3"
   )
   
   # Returns a list, functioning as a name -> col assignment

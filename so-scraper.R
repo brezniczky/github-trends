@@ -7,17 +7,17 @@ output.file = "intermediate/SO_results.RData"
 
 searches =
   list(
-    "Machine Learning" = c("Python", "Java", "R", "C#"), # added C#! 
-    Analysis = c("R", "Python", "Java", "R", "C#"),  # added C#!
-    Spark = c("Python", "Java", "Scala", "R"), # no c#
-    "Deep Learning" = c("C++", "Java", "MatLab", "Python", "R", "C#"),   # added C#!
-    "Big Data" = c("Python", "Java", "R", "Scala", "C#"),
-    "Kaggle" = c("Python", "R", "Matlab", "Java"), # no C#
-    "Data Science" = c("Python", "R", "Jupyter Notebook", "C#"), # added C#!
+    "Machine Learning" = c("Python", "Java", "R", "C#", "SQL"), # added C#! 
+    Analysis = c("R", "Python", "Java", "R", "C#", "SQL"),  # added C#!
+    Spark = c("Python", "Java", "Scala", "R", "SQL"), # no c#
+    "Deep Learning" = c("C++", "Java", "MatLab", "Python", "R", "C#", "SQL"),   # added C#!
+    "Big Data" = c("Python", "Java", "R", "Scala", "C#", "SQL"),
+    "Kaggle" = c("Python", "R", "Matlab", "Java", "SQL"), # no C#
+    "Data Science" = c("Python", "R", "Jupyter Notebook", "C#", "SQL"), # added C#!
        # pending "Java", "C++", "TeX", "go", 
-    # "Data" = c("Python", "R", "Jupyter Notebook", "Java", "C++", "TeX", "go", "C#"), # added C#!
-    # "Science" = c("Python", "R", "Jupyter Notebook", "Java", "C++", "TeX", "go", "C#"), # added C#!
-    "AWS" = c("JavaScript", "Python", "Ruby", "Java", "PHP", "go", "C#"), # added C#!
+    # "Data" = c("Python", "R", "Jupyter Notebook", "Java", "C++", "TeX", "go", "C#", "SQL"), # added C#!
+    # "Science" = c("Python", "R", "Jupyter Notebook", "Java", "C++", "TeX", "go", "C#", "SQL"), # added C#!
+    "AWS" = c("JavaScript", "Python", "Ruby", "Java", "PHP", "go", "C#", "SQL"), # added C#!
     # # "Coursera" = c(
     # #   "HTML",
     # #   "R",
@@ -30,9 +30,9 @@ searches =
     # #   "Jupyter Notebook",
     # #   "Ruby"
     # # )
-    "Mining" = c("Python", "Java", "R", "JavaScript", "Jupyter Notebook", "HTML", "C++", "C#"),
-    "Visualization" = c("JavaScript", "Python", "HTML", "Java", "C++", "R", "CSS", "Jupyter Notebook"),
-    "Chart" = c("JavaScript", "Java", "HTML", "Python", "ColdFusion", "PHP", "Ruby", "Objective-C", "CSS", "C#", "R")
+    "Mining" = c("Python", "Java", "R", "JavaScript", "Jupyter Notebook", "HTML", "C++", "C#", "SQL"),
+    "Visualization" = c("JavaScript", "Python", "HTML", "Java", "C++", "R", "CSS", "Jupyter Notebook", "SQL"),
+    "Chart" = c("JavaScript", "Java", "HTML", "Python", "ColdFusion", "PHP", "Ruby", "Objective-C", "CSS", "C#", "R", "SQL")
   )
 
 

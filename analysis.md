@@ -25,7 +25,7 @@ Picking a Language for Analytics and Machine Learning (Working Draft)
 
 *Janos Brezniczky*
 
-*March, 2017*
+*April, 2017*
 
 Executive Conjecture
 --------------------
@@ -94,7 +94,7 @@ is a good predictor of future preference.)
 Keyword \#2: "Spark"
 --------------------
 
-![](analysis_files/figure-markdown_strict/unnamed-chunk-2-1.png)![](analysis_files/figure-markdown_strict/unnamed-chunk-2-2.png)
+![](analysis_files/figure-markdown_strict/k2-1.png)![](analysis_files/figure-markdown_strict/k2-2.png)
 
 Scala steadily seems to be the major player at Spark. SparkR is in a
 pre-explosion state, if anywhere - and R didn't make it to the top 10 in
@@ -118,7 +118,7 @@ laziness that's not been presented here. Next version.
 Keyword \#3: "Machine Learning"
 -------------------------------
 
-![](analysis_files/figure-markdown_strict/unnamed-chunk-3-1.png)![](analysis_files/figure-markdown_strict/unnamed-chunk-3-2.png)
+![](analysis_files/figure-markdown_strict/k3-1.png)![](analysis_files/figure-markdown_strict/k3-2.png)
 
 I think this one needs no explanation. In my experience, GitHub repos
 are quite often related to online learning, and the conclusion to draw
@@ -130,7 +130,7 @@ again.
 Keyword \#4: "Deep Learning"
 ----------------------------
 
-![](analysis_files/figure-markdown_strict/unnamed-chunk-4-1.png)![](analysis_files/figure-markdown_strict/unnamed-chunk-4-2.png)
+![](analysis_files/figure-markdown_strict/k4-1.png)![](analysis_files/figure-markdown_strict/k4-2.png)
 
 Keyword \#5: "Big Data"
 -----------------------
@@ -140,20 +140,20 @@ Keyword \#5: "Big Data"
 Keyword \#6: "AWS"
 ------------------
 
-![](analysis_files/figure-markdown_strict/unnamed-chunk-5-1.png)![](analysis_files/figure-markdown_strict/unnamed-chunk-5-2.png)
+![](analysis_files/figure-markdown_strict/k6-1.png)![](analysis_files/figure-markdown_strict/k6-2.png)
 
 Keyword \#7: "Data Science"
 ---------------------------
 
-![](analysis_files/figure-markdown_strict/unnamed-chunk-6-1.png)![](analysis_files/figure-markdown_strict/unnamed-chunk-6-2.png)
+![](analysis_files/figure-markdown_strict/k7-1.png)![](analysis_files/figure-markdown_strict/k7-2.png)
 
 ### Sub-keyword: "Science"
 
-![](analysis_files/figure-markdown_strict/unnamed-chunk-7-1.png)
+![](analysis_files/figure-markdown_strict/sk1-1.png)
 
 ### Sub-keyword: "Data"
 
-![](analysis_files/figure-markdown_strict/unnamed-chunk-8-1.png)
+![](analysis_files/figure-markdown_strict/sk2-1.png)
 
 The sub-keyword searches may help with noticing that R is/was big in
 "Data Science" repositories.
@@ -166,22 +166,22 @@ Keyword \#8: "Mining"
 Keyword \#9: "Visualization"
 ----------------------------
 
-![](analysis_files/figure-markdown_strict/Visualization-1.png)![](analysis_files/figure-markdown_strict/Visualization-2.png)
+![](analysis_files/figure-markdown_strict/k9-1.png)![](analysis_files/figure-markdown_strict/k9-2.png)
 
 Keyword \#10: "Chart"
 ---------------------
 
-![](analysis_files/figure-markdown_strict/Chart-1.png)![](analysis_files/figure-markdown_strict/Chart-2.png)
+![](analysis_files/figure-markdown_strict/k10-1.png)![](analysis_files/figure-markdown_strict/k10-2.png)
 
 +1: "Kaggle"
 ------------
 
-![](analysis_files/figure-markdown_strict/unnamed-chunk-9-1.png)![](analysis_files/figure-markdown_strict/unnamed-chunk-9-2.png)
+![](analysis_files/figure-markdown_strict/+1-1.png)![](analysis_files/figure-markdown_strict/+1-2.png)
 
 +2: "Coursera"
 --------------
 
-![](analysis_files/figure-markdown_strict/unnamed-chunk-10-1.png)
+![](analysis_files/figure-markdown_strict/+2-1.png)
 
 GitHub, the most popular free source source code repository service, is
 the vehicle for many assignments on Coursera, which then is the most

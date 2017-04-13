@@ -10,28 +10,7 @@
 # for specifying time ranges, therefore 
 library(httr)
 
-retry = function(expr, times) {
-  
-  retried = 0
-  
-  expr = substitute(expr)
-  
-  while (retried < times) {
-    tryCatch({
-      eval(expr, envir = parent.frame())
-      break
-    },
-    error = function(e) {
-      retried <<- retried + 1
-      if (retried < times) {
-        print(e)
-        print("retrying ...")
-      } else {
-        stop(e)
-      }
-    })
-  }
-}
+source("generic-client.R")
 
 get.SO.question.count = function(fromdate, todate, body, tagged, app.key, num.retries = 3, stop.on.paging = FALSE) {
   # url = 
@@ -152,7 +131,7 @@ so.scrape = function(searches,
                      app.key) { 
 
   start.date = as.Date("2008-01-01")
-  n.periods = 52 * 9 + 10 # up to 2017-02-27
+  n.periods = 52 * 9 + 14 # up to 2017-004-03
   http.error.status.base = 400
   http.error.status.too.many.reqs = 403
 

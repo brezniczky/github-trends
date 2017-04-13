@@ -1,7 +1,7 @@
 ---
 title: "Picking a Language for Server-Side Programming (Working Draft)"
 author: "Janos Brezniczky"
-date: "January 2017"
+date: "April 2017"
 output:
   md_document:
     toc: true
@@ -25,7 +25,7 @@ series.order = get.series.order(c(github.results, SO.results))
 
 _Janos Brezniczky_
 
-_March, 2017_
+_April, 2017_
 
 ## Introduction
 
@@ -57,31 +57,45 @@ as seen near the edges.
 
 ## Keyword #1: "Server"
 
-```{r echo=FALSE, fig.width=10}
+```{r "k1", echo=FALSE, fig.width=10, cache=TRUE}
 double.plot(github.results$Server, SO.results$Server, "Server")
 ```
 
-## Keyword #2: "Web Server"
+Just guesses: What we can see is the interest in server programming seems to stagnate/decrease on StackOverflow. My guess here is that on the one hand, various stacks and the adoption of methodologies more commonplace elsewhere (such as OOP in JavaScript) probably have boosted productivity. On the other hand, servers themselves are less likely to be implemented ground up. I'd expect it is also less likely that the server itself is the product, or is written ground up, rather the application-specific features. It would be also nice to verify if, for instance, a few popular servers are becoming the standard. A quick check: as of 14/04/2017, about half of the SO Python Server questions are related to Django. A better documentation, questions already answered can also be related.
 
-```{r echo=FALSE, fig.width=10}
-double.plot(github.results$`Web Server`, SO.results$`Web Server`, "Web Server")
+## Keyword #2: "Cloud"
+```{r "k2", echo=FALSE, fig.width=10, cache=TRUE}
+double.plot(github.results$Cloud, SO.results$Cloud, "Cloud")
 ```
 
-## Keyword #3: "Service"
+The interest in cloud-related topics seems to be on the incline.
 
-```{r echo=FALSE, fig.width=10}
+While the increase in the latter doesn't fully explain the halt in the server topic growth, cloud can easily overtake the market from classic server hosting. Classic server languages definitely stopped gaining more interest - perhaps down to a better documentation, or as elsewhere mentioned (TODO: add link to prog.hu!), in the favour of newer-style, JS and Python based approaches.
+
+## Keyword #3: "Serverless"
+```{r "k3", echo=FALSE, fig.width=10, cache=TRUE}
+double.plot(github.results$Serverless, SO.results$Serverless, "Serverless")
+```
+
+Serverless is just my favourite candidate for the future. Spinning up a cluster takes time. Possibly the biggest drawback with cloud computing is having to wait for the response. If that is reduced, that's already great - but so is the lower need for operations-related duties.
+This may enable people to focus on a smaller set of activities, and perform those to a higher quality. Whether an abstraction above e.g. AWS Lambda's is to come, is a further question. These requests are not meant to run infinitely long - but they are said to scale well. Operations in the cloud anyway are typically somewhat fragmented so that finishing an interrupted operation becomes more effortless.
+
+## Keyword #4: "Service"
+
+```{r "k4", echo=FALSE, fig.width=10, cache=TRUE}
 double.plot(github.results$Service, SO.results$Service, "Service")
 ```
 
-## Keyword #4: "Microservice"
+## Keyword #5: "Microservice"
 
-```{r echo=FALSE, fig.width=10}
+```{r "k5", echo=FALSE, fig.width=10, cache=TRUE}
 double.plot(github.results$Microservice, SO.results$Microservice, "Microservice")
 ```
 
-## Keyword #5: "Cloud"
-```{r echo=FALSE, fig.width=10}
-double.plot(github.results$Cloud, SO.results$Cloud, "Cloud")
+## Keyword #6: "Web Server"
+
+```{r "k6", echo=FALSE, fig.width=10, cache=TRUE}
+double.plot(github.results$`Web Server`, SO.results$`Web Server`, "Web Server")
 ```
 
 ## Future Work

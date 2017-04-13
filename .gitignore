@@ -7,3 +7,5 @@ intermediate/rerun/*.csv
 intermediate_server/*.csv
 snippets/
 analysis_server.html
+*cache*
+*backup*

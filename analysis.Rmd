@@ -1,7 +1,7 @@
 ---
 title: "Picking a Language for Analytics and Machine Learning (Working Draft)"
 author: "Janos Brezniczky"
-date: "January 2017"
+date: "April 2017"
 output:
   md_document:
     toc: true
@@ -25,7 +25,7 @@ series.order = get.series.order(c(github.results, SO.results))
 
 _Janos Brezniczky_
 
-_March, 2017_
+_April, 2017_
 
 ## Executive Conjecture
 
@@ -61,7 +61,7 @@ as seen near the edges.
 
 The most interesting here is probably that the influence of R seems to plateau out.
 
-```{r "k1", echo=FALSE, fig.width=10}
+```{r "k1", echo=FALSE, fig.width=10, cache=TRUE}
 double.plot(github.results$Analysis, SO.results$Analysis, "Analysis")
 ```
 
@@ -71,7 +71,7 @@ For some, the likely surprise of the (currently fractional) year 2016 may also b
 
 ## Keyword #2: "Spark"
 
-```{r echo=FALSE, fig.width=10}
+```{r "k2", echo=FALSE, fig.width=10, cache=TRUE}
 double.plot(github.results$Spark, SO.results$Spark, "Spark")
 ```
 
@@ -86,7 +86,7 @@ Similarly GitHub for the past 6 months indicates a trendshift, too - however due
 
 ## Keyword #3: "Machine Learning"
 
-```{r echo=FALSE, fig.width=10}
+```{r "k3", echo=FALSE, fig.width=10, cache=TRUE}
 double.plot(github.results$`Machine Learning`, SO.results$`Machine Learning`, "Machine Learning")
 ```
 
@@ -95,37 +95,37 @@ One remarkable aspect is perhaps that the growth is beautfully exponential - it 
 
 ## Keyword #4: "Deep Learning"
 
-```{r echo=FALSE, fig.width=10}
+```{r "k4", echo=FALSE, fig.width=10, cache=TRUE}
 double.plot(github.results$`Deep Learning`, SO.results$`Deep Learning`, "Deep Learning")
 ```
 
 ## Keyword #5: "Big Data"
 
-```{r "k5", echo=FALSE, fig.width=10}
+```{r "k5", echo=FALSE, fig.width=10, cache=TRUE}
 double.plot(github.results$`Big Data`, SO.results$`Big Data`, "Big Data")
 ```
 
 ## Keyword #6: "AWS"
 
-```{r echo=FALSE, fig.width=10}
+```{r "k6", echo=FALSE, fig.width=10, cache=TRUE}
 double.plot(github.results$AWS, SO.results$AWS, "AWS")
 ```
 
 ## Keyword #7: "Data Science"
 
-```{r echo=FALSE, fig.width=10}
+```{r "k7", echo=FALSE, fig.width=10, cache=TRUE}
 double.plot(github.results$`Data Science`, SO.results$`Data Science`, "Data Science")
 ```
 
 ### Sub-keyword: "Science"
 
-```{r echo=FALSE, fig.width=10}
+```{r "sk1", echo=FALSE, fig.width=10, cache=TRUE}
 smooth.plot(github.results$`Science`, "Science")
 ```
 
 ### Sub-keyword: "Data"
 
-```{r echo=FALSE, fig.width=10}
+```{r "sk2", echo=FALSE, fig.width=10, cache=TRUE}
 smooth.plot(github.results$`Data`, "Data")
 ```
 
@@ -133,31 +133,31 @@ The sub-keyword searches may help with noticing that R is/was big in "Data Scien
 
 ## Keyword #8: "Mining"
 
-```{r "k8", echo=FALSE, fig.width=10}
+```{r "k8", echo=FALSE, fig.width=10, cache=TRUE}
 double.plot(github.results$Mining, SO.results$Mining, "Mining")
 ```
 
 ## Keyword #9: "Visualization"
 
-```{r "Visualization", echo=FALSE, fig.width=10}
+```{r "k9", echo=FALSE, fig.width=10, cache=TRUE}
 double.plot(github.results$Visualization, SO.results$Visualization, "Visualization")
 ```
 
 ## Keyword #10: "Chart"
 
-```{r "Chart", echo=FALSE, fig.width=10}
+```{r "k10", echo=FALSE, fig.width=10, cache=TRUE}
 double.plot(github.results$Chart, SO.results$Chart, "Chart")
 ```
 
 ## +1: "Kaggle"
 
-```{r echo=FALSE, fig.width=10}
+```{r "+1", echo=FALSE, fig.width=10, cache=TRUE}
 double.plot(github.results$`Kaggle`, SO.results$`Kaggle`, "Kaggle")
 ```
 
 ## +2: "Coursera"
 
-```{r echo=FALSE, fig.width=10}
+```{r "+2", echo=FALSE, fig.width=10, cache=TRUE}
 smooth.plot(github.results$Coursera, "Coursera")
 ```
 

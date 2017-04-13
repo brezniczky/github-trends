@@ -2,6 +2,40 @@
 # be installed for a successful run.
 library(httr)
 
+get.url = function(d1, d2, keyword, language) {
+  url =
+    sprintf(
+      "https://api.github.com/search/repositories?q=%s+language:%s+created:%s..%s",
+      URLencode(keyword, reserved = TRUE),
+      URLencode(language, reserved = TRUE),
+      d1,
+      d2
+    )
+  return(url)
+}
+
+get.count = function(d1, d2, keyword, language, gtoken) {
+  http.error.status.base = 400
+  http.error.status.too.many.reqs = 403
+  
+  url = get.url(d1, d2, keyword, language)
+  print(url)
+  
+  repeat {
+    Sys.sleep(1)
+    req <- GET(url, gtoken)
+    if (req$status_code != http.error.status.too.many.reqs) {
+      if (req$status_code >= http.error.status.base)
+        stop("bad status code, request:", content(req))
+      else
+        break
+    }
+    print("retrying...")
+  }
+  
+  return(content(req)$total_count)
+}
+
 #' Download keyword-specific statistics from GitHub
 #'
 #' An intermediate storage of cache files is created to reduce data loss
@@ -23,9 +57,7 @@ scrape = function(searches,
   gtoken <- config(token = github_token)
   
   start.date = as.Date("2008-01-01")
-  n.periods = 52 * 9 + 10 # up to 2017-02-27
-  http.error.status.base = 400
-  http.error.status.too.many.reqs = 403
+  n.periods = 52 * 9 + 14 # up to 2017-03-27
   
   results = list()
   
@@ -44,32 +76,34 @@ scrape = function(searches,
         counts = c()
       }
       
+      print("-- detecting empty preceding periods --")
+      
+      zero.periods.detected = n.periods
+      while (zero.periods.detected > length(counts)) {
+        count = get.count(start.date, start.date + zero.periods.detected * 7 - 1, 
+                          keyword, language, gtoken)
+        if (count > 0) {
+          zero.periods.detected = zero.periods.detected %/% 2
+        }
+        else {
+          break
+        }
+      }
+      
+      print(sprintf("-- finished, %d periods found --", zero.periods.detected))
+
+      if (zero.periods.detected > length(counts)) {
+        counts = c(counts, rep(0, zero.periods.detected - length(counts)))
+      }
+
       if (length(counts) < n.periods) {
         for (i in length(counts):(n.periods - 1)) {
           d1 = start.date + i * 7
           d2 = d1 + 6
-          url =
-            sprintf(
-              "https://api.github.com/search/repositories?q=%s+language:%s+created:%s..%s",
-              URLencode(keyword, reserved = TRUE),
-              URLencode(language, reserved = TRUE),
-              d1,
-              d2
-            )
-          print(url)
-          repeat {
-            Sys.sleep(1)
-            req <- GET(url, gtoken)
-            if (req$status_code != http.error.status.too.many.reqs) {
-              if (req$status_code >= http.error.status.base)
-                stop("bad status code, request:", content(req))
-              else
-                break
-            }
-            print("retrying...")
-          }
-          count = content(req)$total_count
+          
+          count = get.count(d1, d2, keyword, language, gtoken)
           print(count)
+          
           counts[i + 1] = count
           
           if (i %% 52 == 51)
