@@ -10,7 +10,7 @@
 # for specifying time ranges, therefore 
 library(httr)
 
-source("generic-client.R")
+source("utils/generic-client.R")
 
 get.SO.question.count = function(fromdate, todate, body, tagged, app.key, num.retries = 3, stop.on.paging = FALSE) {
   # url = 

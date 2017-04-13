@@ -9,7 +9,7 @@ output:
 
 ```{r echo=FALSE}
 # setwd("/media/janca/Code/Prog/Github Analysis/analytics-and-hadoop-trends/github-trends/")
-source("plotting.R")
+source("utils/plotting.R")
 
 load("intermediate_server/results.RData")
 github.results = results

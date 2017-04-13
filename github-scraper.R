@@ -1,5 +1,5 @@
 # setwd("/media/janca/Code/Prog/Github Analysis/analytics-and-hadoop-trends/github-trends/")
-source("github-client.R")
+source("utils/github-client.R")
 
 row.cache.filename.fmt = "intermediate/%s %s created weekly.csv"
 
